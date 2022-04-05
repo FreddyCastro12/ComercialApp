@@ -7,4 +7,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ComercialAppFrontend';
+
+  viewProducts(): void {
+    
+  }
+
+  viewServices(): void {
+    
+  }
+
+  login(): void {
+    
+  }
 }
