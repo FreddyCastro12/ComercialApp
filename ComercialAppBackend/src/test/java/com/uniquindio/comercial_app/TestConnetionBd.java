@@ -14,8 +14,8 @@ class TestConnetionBd {
 	@Autowired
 	private IClientService dataClient;
 	
-	@Autowired
-	private BCryptPasswordEncoder encoder;
+//	@Autowired
+//	private BCryptPasswordEncoder encoder;
 
 	@Test
 	public void createUser() {
