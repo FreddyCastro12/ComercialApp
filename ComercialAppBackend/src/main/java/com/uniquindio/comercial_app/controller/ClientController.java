@@ -35,8 +35,8 @@ public class ClientController {
 	}
 
 	// Edit client
-	@PutMapping(path = { "/editClient/{idClient}" })
-	public Client editClient(@RequestBody Client client, @PathVariable("idClient") Integer idClient) {
+	@PutMapping(path = { "/editClient" })
+	public Client editClient(@RequestBody Client client) {
 		return serviceClient.editClient(client);
 	}
 
