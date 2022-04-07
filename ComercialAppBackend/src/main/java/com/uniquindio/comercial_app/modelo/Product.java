@@ -20,16 +20,20 @@ public class Product {
 	private Double cost;
 	@Column(name = "PRODUCT_DESCRIPTION")
 	private String description;
+	@Column(name = "PRODUCT_IMAGE")
+	private String imagen;
 	
-	public Product(Integer id, String name, Double cost, String description) {
+	public Product() {
+
+	}
+
+	public Product(Integer id, String name, Double cost, String description, String imagen) {
+		super();
 		this.id = id;
 		this.name = name;
 		this.cost = cost;
 		this.description = description;
-	}
-	
-	public Product() {
-
+		this.imagen = imagen;
 	}
 
 	public Integer getId() {
@@ -62,6 +66,14 @@ public class Product {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public String getImagen() {
+		return imagen;
+	}
+
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
 	}
 	
 }
