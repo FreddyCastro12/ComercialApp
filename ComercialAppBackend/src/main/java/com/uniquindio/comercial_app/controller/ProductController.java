@@ -1,5 +1,6 @@
 package com.uniquindio.comercial_app.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,4 +47,16 @@ public class ProductController {
 		return serviceProduct.deleteProduct(idProduct);
 	}
 	
+	// List products by word
+	@GetMapping("/listProducts/{wordProduct}")
+	public List<Product> listProductsbyWord(@PathVariable("wordProduct") String word) {
+		List<Product> products = listProducts();
+		List<Product> productsByWord = new ArrayList<>();
+		for (Product product : products) {
+			if (product.getName().contains(word)) {
+				productsByWord.add(product);
+			}
+		}
+		return productsByWord;
+	}
 }
