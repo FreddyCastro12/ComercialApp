@@ -3,6 +3,7 @@ package com.uniquindio.comercial_app.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +18,7 @@ import com.uniquindio.comercial_app.modelo.Client;
 
 @RestController
 @RequestMapping("/client")
+@CrossOrigin(origins = "http://localhost:4200")
 public class ClientController {
 
 	@Autowired
