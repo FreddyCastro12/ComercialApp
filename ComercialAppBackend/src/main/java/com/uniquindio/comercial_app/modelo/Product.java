@@ -1,9 +1,9 @@
 package com.uniquindio.comercial_app.modelo;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -12,14 +12,19 @@ import javax.persistence.Table;
 public class Product {
 	
 	@Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "PRODUCT_ID")
 	private Integer id;
+	
 	@Column(name = "PRODUCT_NAME")
 	private String name;
+	
 	@Column(name = "PRODUCT_COST")
 	private Double cost;
+	
 	@Column(name = "PRODUCT_DESCRIPTION")
 	private String description;
+	
 	@Column(name = "PRODUCT_IMAGE")
 	private String imagen;
 	
