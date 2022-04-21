@@ -1,0 +1,39 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8"></div>
+<!-- Page content -->
+<div class="container-fluid mt--7">
+    <div class="row">
+        <div class="col">
+            <div class="card shadow">
+                <div class="card-header bg-transparent">
+                    <h3 class="mb-0">Crear Productos</h3>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="product_name" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="product_name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="product_cost" class="form-label">Costo</label>
+                            <input type="number" class="form-control" id="product_cost">
+                        </div>
+                        <div class="mb-3">
+                            <label for="product_description" class="form-label">Descripción</label>
+                            <textarea class="form-control" id="product_description" rows="3"></textarea>
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="product-image">
+                                <label class="custom-file-label" for="product-image" aria-describedby="input-image">Seleccionar Archivo</label>
+                            </div>
+                            <div class="input-group-append">
+                                <span class="input-group-text" id="input-image">Subir</span>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Guardar Producto</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
