@@ -5,36 +5,39 @@
         <div class="col">
             <div class="card shadow">
                 <div class="card-header bg-transparent">
-                    <h3 class="mb-0">Crear Productos</h3>
+                    <h3 class="mb-0">Crear Locales</h3>
                 </div>
                 <div class="card-body">
                     <form>
                         <div class="mb-3">
-                            <label for="product_name" class="form-label">Nombre</label>
-                            <input type="text" class="form-control" id="product_name">
+                            <label for="local-name" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="local-name">
                         </div>
                         <div class="mb-3">
-                            <label for="product_cost" class="form-label">Costo</label>
-                            <input type="number" class="form-control" id="product_cost">
+                            <label for="local-site" class="form-label">Sitio</label>
+                            <input type="number" class="form-control" id="local-site">
                         </div>
                         <div class="mb-3">
-                            <label for="product_description" class="form-label">Descripción</label>
-                            <textarea class="form-control" id="product_description" rows="3"></textarea>
+                            <label for="local-status" class="form-label">Estado</label>
+                            <select class="custom-select" id="local-status">
+                                <option selected>Seleccione el estado</option>
+                                <option value="1">Activo</option>
+                                <option value="2">Inactivo</option>
+                            </select>
                         </div>
-                        <div class="input-group mb-3">
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="product-image">
-                                <label class="custom-file-label" for="product-image" aria-describedby="input-image">Seleccionar Archivo</label>
-                            </div>
-                            <div class="input-group-append">
-                                <span class="input-group-text" id="input-image">Subir</span>
-                            </div>
+                        <div class="mb-3">
+                            <label for="local-dateStart" class="form-label">Fecha Inicio</label>
+                            <input type="date" class="form-control" id="local-dateStart">
                         </div>
-                        <button type="submit" class="btn btn-primary">Guardar Producto</button>
+                        <div class="mb-3">
+                            <label for="local-dateEnd" class="form-label">Fecha Fin</label>
+                            <input type="date" class="form-control" id="local-dateEnd">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Guardar Local</button>
                     </form>
                 </div>
                 <div class="card-header border-0">
-                    <h3 class="mb-0">Productos</h3>
+                    <h3 class="mb-0">Locales</h3>
                 </div>
                 <div class="table-responsive">
                     <table class="table table-striped">
@@ -48,7 +51,7 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <th scope="row">3</th>
+                                <th scope="row">1</th>
                                 <td>Larry</td>
                                 <td>the Bird</td>
                                 <td>

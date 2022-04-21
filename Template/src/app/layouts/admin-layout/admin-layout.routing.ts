@@ -6,6 +6,8 @@ import { MapsComponent } from '../../pages/maps/maps.component';
 import { UserProfileComponent } from '../../pages/user-profile/user-profile.component';
 import { TablesComponent } from '../../pages/tables/tables.component';
 import { ProductoComponent } from 'src/app/pages/producto/producto.component';
+import { LocalComponent } from 'src/app/pages/local/local.component';
+import { ServicioComponent } from 'src/app/pages/servicio/servicio.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
@@ -13,5 +15,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'tables',         component: TablesComponent },
     { path: 'icons',          component: IconsComponent },
     { path: 'maps',           component: MapsComponent },
-    { path: 'producto',       component: ProductoComponent }
+    { path: 'producto',       component: ProductoComponent },
+    { path: 'local',          component: LocalComponent },
+    { path: 'servicio',       component: ServicioComponent },
 ];
