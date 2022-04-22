@@ -10,21 +10,20 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "LOCAL")
+@Table(name = "local")
 public class Local {
 	@Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name = "LOCAL_ID")
+	@Column(name = "local_id")
 	private Integer id;
-	@Column(name = "LOCAL_NAME")
+	@Column(name = "local_name")
 	private String name;
-	@Column(name = "LOCAL_SITE")
+	@Column(name = "local_site")
 	private String site;
-	@Column(name = "LOCAL_STATUS")
+	@Column(name = "local_status")
 	private Integer status;
-	@Column(name = "LOCAL_DATE_START")
+	@Column(name = "local_date_start")
 	private Date dateStart;
-	@Column(name = "LOCAL_DATE_END")
+	@Column(name = "local_date_end")
 	private Date dateEnd;
 	
 	public Local(Integer id, String name, String site, Integer status, Date dateStart, Date dateEnd) {

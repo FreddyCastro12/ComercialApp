@@ -11,10 +11,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "CLIENTS")
+@Table(name = "CLIENT")
 public class Client {
 	@Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name = "CLIENT_ID")
 	private Integer id;
 	@Column(name = "CLIENT_USER")
