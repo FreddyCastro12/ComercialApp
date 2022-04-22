@@ -18,7 +18,7 @@ import com.uniquindio.comercial_app.modelo.Local;
 
 @RestController
 @RequestMapping("/local")
-@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
+@CrossOrigin(origins = "http://localhost:4200")
 public class LocalController {
 	
 	@Autowired
@@ -34,11 +34,6 @@ public class LocalController {
 	@GetMapping("/listLocal")
 	public List<Local> listLocal() {
 		return serviceLocal.listLocal();
-	}
-	
-	@GetMapping("/prueba")
-	public String prueba() {
-		return "entra";
 	}
 
 	// Edit local

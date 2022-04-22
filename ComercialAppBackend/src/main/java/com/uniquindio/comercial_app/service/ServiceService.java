@@ -8,7 +8,6 @@ import com.uniquindio.comercial_app.interfaceService.IServiceService;
 import com.uniquindio.comercial_app.interfaces.IService;
 import com.uniquindio.comercial_app.modelo.Service;
 
-@org.springframework.stereotype.Service
 public class ServiceService implements IServiceService{
 	
 	@Autowired

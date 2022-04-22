@@ -18,7 +18,7 @@ import com.uniquindio.comercial_app.modelo.Client;
 
 @RestController
 @RequestMapping("/client")
-@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
+@CrossOrigin(origins = "http://localhost:4200")
 public class ClientController {
 
 	@Autowired
