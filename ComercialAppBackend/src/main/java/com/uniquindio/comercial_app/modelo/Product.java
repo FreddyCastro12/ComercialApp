@@ -1,9 +1,9 @@
 package com.uniquindio.comercial_app.modelo;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -12,24 +12,33 @@ import javax.persistence.Table;
 public class Product {
 	
 	@Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "PRODUCT_ID")
 	private Integer id;
+	
 	@Column(name = "PRODUCT_NAME")
 	private String name;
+	
 	@Column(name = "PRODUCT_COST")
 	private Double cost;
+	
 	@Column(name = "PRODUCT_DESCRIPTION")
 	private String description;
 	
-	public Product(Integer id, String name, Double cost, String description) {
+	@Column(name = "PRODUCT_IMAGE")
+	private String imagen;
+	
+	public Product() {
+
+	}
+
+	public Product(Integer id, String name, Double cost, String description, String imagen) {
+		super();
 		this.id = id;
 		this.name = name;
 		this.cost = cost;
 		this.description = description;
-	}
-	
-	public Product() {
-
+		this.imagen = imagen;
 	}
 
 	public Integer getId() {
@@ -62,6 +71,14 @@ public class Product {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public String getImagen() {
+		return imagen;
+	}
+
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
 	}
 	
 }
