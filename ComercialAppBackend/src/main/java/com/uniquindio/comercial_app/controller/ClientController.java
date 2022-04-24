@@ -27,6 +27,7 @@ public class ClientController {
 	// Create client
 	@PostMapping("/addClient")
 	public Client addClient(@RequestBody Client client) {
+		client.setAmount(0.0);
 		return serviceClient.addClient(client);
 	}
 
