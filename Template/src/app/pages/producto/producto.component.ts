@@ -21,16 +21,20 @@ export class ProductoComponent implements OnInit {
     })
   }
   saveProduct(){
-    this.service.createProduct(this.product).subscribe(data => {
-      alert("El producto se agrego con exito");
-      window.location.reload()
-    })
+    if (this.product.id) {
+      this.service.updateProduct(this.product).subscribe(data => {
+        alert("El producto se modifico con exito");
+        window.location.reload()
+      })
+    } else {
+      this.service.createProduct(this.product).subscribe(data => {
+        alert("El producto se agrego con exito");
+        window.location.reload()
+      })
+    }
   }
   updateProduct(product:Product){
-    this.service.updateProduct(product).subscribe(data => {
-      alert("El producto se elimino con exito");
-      window.location.reload()
-    })
+    this.product=product
   }
   deleteProduct(product:Product){
     this.service.deleteProduct(product.id).subscribe(data => {

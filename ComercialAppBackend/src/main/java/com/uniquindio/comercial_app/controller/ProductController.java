@@ -42,6 +42,8 @@ public class ProductController {
 	// Edit product
 	@PutMapping(path = { "/editProduct" })
 	public Product editProduct(@RequestBody Product product) {
+		String name = getNameOfPath(product.getImagen());
+		product.setImagen(name);
 		return serviceProduct.editProduct(product);
 	}
 
