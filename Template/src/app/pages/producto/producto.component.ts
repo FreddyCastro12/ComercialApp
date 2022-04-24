@@ -11,15 +11,31 @@ import { ServiceService } from 'src/app/pages/components/product_client/Service/
 export class ProductoComponent implements OnInit {
 
   product:Product = new Product;
+  products:Product[];
   constructor(private router:Router, private service:ServiceService) { }
 
   ngOnInit(): void {
-  }
-  saveProduct(){
-    console.log("entra")
-    console.log(this.product)
-    this.service.createProduct(this.product).subscribe(data => {
-      alert("El producto se agrego con exito");
+    this.service.listProducts()
+    .subscribe(data=>{
+      this.products=data;
     })
   }
+  saveProduct(){
+    this.service.createProduct(this.product).subscribe(data => {
+      alert("El producto se agrego con exito");
+      window.location.reload()
+    })
+  }
+  updateProduct(product:Product){
+    this.service.updateProduct(product).subscribe(data => {
+      alert("El producto se elimino con exito");
+      window.location.reload()
+    })
+  }
+  deleteProduct(product:Product){
+    this.service.deleteProduct(product.id).subscribe(data => {
+      alert("El producto se elimino con exito");
+      window.location.reload()
+    })
+    }
 }
