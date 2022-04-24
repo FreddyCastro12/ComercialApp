@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
   addCliente(){
     this.service.createCliente(this.client).subscribe(data => {
       alert("El cliente se registro con exito");
-      window.location.reload()
+      this.router.navigate(["/login"]);
     })
   }
 }
