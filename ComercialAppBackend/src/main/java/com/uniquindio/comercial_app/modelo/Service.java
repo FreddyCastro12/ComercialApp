@@ -14,7 +14,7 @@ import javax.persistence.Table;
 public class Service {
 
 	@Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name = "SERVICE_ID")
 	private Integer id;
 	@Column(name = "SERVICE_NAME")

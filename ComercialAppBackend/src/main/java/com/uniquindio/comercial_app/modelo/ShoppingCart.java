@@ -15,7 +15,7 @@ import javax.persistence.Table;
 public class ShoppingCart {
 
 	@Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name = "SHOPPING_CART_ID")
 	private Integer id;
 	@OneToMany

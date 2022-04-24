@@ -13,6 +13,7 @@ import javax.persistence.Table;
 @Table(name = "local")
 public class Local {
 	@Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name = "local_id")
 	private Integer id;
 	@Column(name = "local_name")
