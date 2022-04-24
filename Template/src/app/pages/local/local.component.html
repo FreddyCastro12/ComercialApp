@@ -11,29 +11,29 @@
                     <form>
                         <div class="mb-3">
                             <label for="local-name" class="form-label">Nombre</label>
-                            <input type="text" class="form-control" id="local-name">
+                            <input type="text" class="form-control" [(ngModel)]="local.name" name="name">
                         </div>
                         <div class="mb-3">
                             <label for="local-site" class="form-label">Sitio</label>
-                            <input type="number" class="form-control" id="local-site">
+                            <input type="number" class="form-control" [(ngModel)]="local.site" name="site">
                         </div>
                         <div class="mb-3">
                             <label for="local-status" class="form-label">Estado</label>
-                            <select class="custom-select" id="local-status">
+                            <select class="custom-select" [(ngModel)]="local.status" name="status">
                                 <option selected>Seleccione el estado</option>
                                 <option value="1">Activo</option>
-                                <option value="2">Inactivo</option>
+                                <option value="0">Inactivo</option>
                             </select>
                         </div>
                         <div class="mb-3">
                             <label for="local-dateStart" class="form-label">Fecha Inicio</label>
-                            <input type="date" class="form-control" id="local-dateStart">
+                            <input type="date" class="form-control" [(ngModel)]="local.dateStart" name="dateStart">
                         </div>
                         <div class="mb-3">
                             <label for="local-dateEnd" class="form-label">Fecha Fin</label>
-                            <input type="date" class="form-control" id="local-dateEnd">
+                            <input type="date" class="form-control" [(ngModel)]="local.dateEnd" name="dateEnd">
                         </div>
-                        <button type="submit" class="btn btn-primary">Guardar Local</button>
+                        <button type="button" class="btn btn-primary" (click)="addLocal()">Guardar Local</button>
                     </form>
                 </div>
                 <div class="card-header border-0">
