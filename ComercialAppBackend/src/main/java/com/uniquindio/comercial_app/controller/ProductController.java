@@ -28,8 +28,8 @@ public class ProductController {
 	// Create product
 	@PostMapping("/addProduct")
 	public Product addProduct(@RequestBody Product product) {
-		System.out.println("entra");
-		System.out.println(product);
+		String name = getNameOfPath(product.getImagen());
+		product.setImagen(name);
 		return serviceProduct.addProduct(product);
 	}
 
@@ -62,5 +62,12 @@ public class ProductController {
 			}
 		}
 		return productsByWord;
+	}
+	
+	public String getNameOfPath(String path) {
+		String name="";
+		int find = path.lastIndexOf(92);
+		name = path.substring(find+1,path.length());
+		return name;
 	}
 }
