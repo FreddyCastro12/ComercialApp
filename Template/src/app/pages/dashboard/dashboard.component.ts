@@ -17,21 +17,19 @@ import { ServiceService } from '../components/product_client/Service/service.ser
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-
+  products: Product[];
   public datasets: any;
   public data: any;
   public salesChart;
   public clicked: boolean = true;
   public clicked1: boolean = false;
-  allProducts: Product[];
 
   constructor(private service:ServiceService) { }
 
   ngOnInit() {
-
     this.service.listProducts()
     .subscribe(data=>{
-      this.allProducts=data;
+      this.products=data;
     })
 
     this.datasets = [
