@@ -13,4 +13,6 @@ public interface IClientService {
 	public Client editClient(Client client);
 
 	public Client deleteClient(Integer id);
+	
+	public Client loginClient(String email, String password);
 }

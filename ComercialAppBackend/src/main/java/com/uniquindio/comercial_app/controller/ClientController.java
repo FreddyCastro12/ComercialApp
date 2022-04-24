@@ -48,4 +48,11 @@ public class ClientController {
 	public Client deleteClient(@PathVariable("idClient") Integer idClient) {
 		return serviceClient.deleteClient(idClient);
 	}
+
+	// login client
+	@GetMapping(path = { "/loginClient/{email}/{password}" })
+	public Client loginClient(@PathVariable("email") String email, @PathVariable("password") String password) {
+		return serviceClient.loginClient(email, password);
+	}
+
 }

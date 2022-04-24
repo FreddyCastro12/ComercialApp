@@ -39,4 +39,18 @@ public class ClientService implements IClientService{
 		return client;
 	}
 
+	@Override
+	public Client loginClient(String email, String password) {
+		Client client = dataClient.findByEmail(email);
+		if (client!=null) {
+			String passwordClient = client.getPassword();
+			if(passwordClient.equals(password)) {
+				return client;
+			}else {
+				return null;
+			}
+		}
+		return null;
+	}
+
 }

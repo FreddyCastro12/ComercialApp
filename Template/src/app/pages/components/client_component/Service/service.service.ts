@@ -22,5 +22,7 @@ export class ServiceService {
   deleteCliente(id:number){
     return this.http.delete<Client>(this.UrlCliente+"/deleteClient/" + id);
   }
-
+  loginCliente(email:String, password:String){
+    return this.http.get<Client>(this.UrlCliente+"/loginClient/" + email + "/" + password);
+  }
 }
