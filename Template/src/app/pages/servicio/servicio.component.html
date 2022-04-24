@@ -5,31 +5,32 @@
         <div class="col">
             <div class="card shadow">
                 <div class="card-header bg-transparent">
-                    <h3 class="mb-0">Crear Productos</h3>
+                    <h3 class="mb-0">Crear Servicios</h3>
                 </div>
                 <div class="card-body">
                     <form>
+                        <input type="hidden" name="id" [(ngModel)]="service.id">
                         <div class="mb-3">
-                            <label for="product_name" class="form-label">Nombre</label>
-                            <input type="text" class="form-control" id="product_name">
+                            <label for="service_name" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" [(ngModel)]="service.name" name="name">
                         </div>
                         <div class="mb-3">
-                            <label for="product_cost" class="form-label">Costo</label>
-                            <input type="number" class="form-control" id="product_cost">
+                            <label for="service_cost" class="form-label">Costo</label>
+                            <input type="number" class="form-control" [(ngModel)]="service.cost" name="cost">
                         </div>
                         <div class="mb-3">
-                            <label for="product_description" class="form-label">Descripción</label>
-                            <textarea class="form-control" id="product_description" rows="3"></textarea>
+                            <label for="service_description" class="form-label">Descripción</label>
+                            <textarea class="form-control" [(ngModel)]="service.description" name="description" rows="3"></textarea>
                         </div>
                         <div class="mb-3">
-                            <label for="local-dateStart" class="form-label">Fecha Inicio</label>
-                            <input type="date" class="form-control" id="local-dateStart">
+                            <label for="service-dateStart" class="form-label">Fecha Inicio</label>
+                            <input type="date" class="form-control" [(ngModel)]="service.dateStart" name="dateStart">
                         </div>
                         <div class="mb-3">
-                            <label for="local-dateEnd" class="form-label">Fecha Fin</label>
-                            <input type="date" class="form-control" id="local-dateEnd">
+                            <label for="service-dateEnd" class="form-label">Fecha Fin</label>
+                            <input type="date" class="form-control" [(ngModel)]="service.dateEnd" name="dateEnd">
                         </div>
-                        <button type="submit" class="btn btn-primary">Guardar Servicio</button>
+                        <button type="submit" class="btn btn-primary" (click)="addService()">Guardar Servicio</button>
                     </form>
                 </div>
                 <div class="card-header border-0">
@@ -40,19 +41,25 @@
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">First</th>
-                                <th scope="col">Last</th>
-                                <th scope="col">Handle</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Costo</th>
+                                <th scope="col">Descripción</th>
+                                <th scope="col">Fecha Inicio</th>
+                                <th scope="col">Fecha Fin</th>
+                                <th scope="col"></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Larry</td>
-                                <td>the Bird</td>
+                            <tr *ngFor="let service of services">
+                                <td>{{ service.id }}</td>
+                                <td>{{ service.name }}</td>
+                                <td>{{ service.cost }}</td>
+                                <td>{{ service.description }}</td>
+                                <td>{{ service.dateStart | date: 'yyyy-MM-dd' }}</td>
+                                <td>{{ service.dateEnd | date: 'yyyy-MM-dd' }}</td>
                                 <td>
-                                    <a href=""><i class="fa-solid fa-pen-to-square"></i></a>
-                                    <a href=""><i class="fa-solid fa-trash"></i></a>
+                                    <a (click)="updateService(service)"><i class="fa-solid fa-pen-to-square"></i></a>
+                                    <a (click)="deleteService(service.id)"><i class="fa-solid fa-trash"></i></a>
                                 </td>
                             </tr>
                         </tbody>

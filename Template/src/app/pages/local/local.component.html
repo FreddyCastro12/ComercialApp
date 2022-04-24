@@ -59,8 +59,8 @@
                                 <td>{{ local.name }}</td>
                                 <td>{{ local.site }}</td>
                                 <td>{{ local.status }}</td>
-                                <td>{{ local.dateStart | date: 'yyyy-MM-dd' }}</td>
-                                <td>{{ local.dateEnd | date: 'yyyy-MM-dd' }}</td>
+                                <td>{{ local.dateStart + "" | date: 'yyyy-MM-dd' }}</td>
+                                <td>{{ local.dateEnd + "" | date: 'yyyy-MM-dd' }}</td>
                                 <td>
                                     <a (click)="updateLocal(local)"><i class="fa-solid fa-pen-to-square"></i></a>
                                     <a (click)="deleteLocal(local.id)"><i class="fa-solid fa-trash"></i></a>
