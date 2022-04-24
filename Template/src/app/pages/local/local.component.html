@@ -9,6 +9,7 @@
                 </div>
                 <div class="card-body">
                     <form>
+                        <input type="hidden" name="id" [(ngModel)]="local.id">
                         <div class="mb-3">
                             <label for="local-name" class="form-label">Nombre</label>
                             <input type="text" class="form-control" [(ngModel)]="local.name" name="name">
@@ -44,19 +45,25 @@
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">First</th>
-                                <th scope="col">Last</th>
-                                <th scope="col">Handle</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Sitio</th>
+                                <th scope="col">Estado</th>
+                                <th scope="col">Fecha Inicio</th>
+                                <th scope="col">Fecha Fin</th>
+                                <th scope="col"></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Larry</td>
-                                <td>the Bird</td>
+                            <tr *ngFor="let local of locales">
+                                <td>{{ local.id }}</td>
+                                <td>{{ local.name }}</td>
+                                <td>{{ local.site }}</td>
+                                <td>{{ local.status }}</td>
+                                <td>{{ local.dateStart | date: 'yyyy-MM-dd' }}</td>
+                                <td>{{ local.dateEnd | date: 'yyyy-MM-dd' }}</td>
                                 <td>
-                                    <a href=""><i class="fa-solid fa-pen-to-square"></i></a>
-                                    <a href=""><i class="fa-solid fa-trash"></i></a>
+                                    <a (click)="updateLocal(local)"><i class="fa-solid fa-pen-to-square"></i></a>
+                                    <a (click)="deleteLocal(local.id)"><i class="fa-solid fa-trash"></i></a>
                                 </td>
                             </tr>
                         </tbody>
