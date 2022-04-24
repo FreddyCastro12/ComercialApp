@@ -8,7 +8,7 @@ import { Cliente } from '../Model/Cliente';
 export class ServiceService {
 
   constructor(private http:HttpClient) { }
-  UrlCliente = 'http://localhost:8080/client';
+  UrlCliente = 'http://localhost:8080/comercialApp/client';
 
   createCliente(cliente:Cliente){
     return this.http.post<Cliente>(this.UrlCliente + "/addClient",cliente);
