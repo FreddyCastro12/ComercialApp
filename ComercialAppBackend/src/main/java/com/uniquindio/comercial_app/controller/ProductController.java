@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,7 @@ import com.uniquindio.comercial_app.modelo.Product;
 
 @RestController
 @RequestMapping("/product")
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 public class ProductController {
 
 	@Autowired
@@ -26,6 +28,8 @@ public class ProductController {
 	// Create product
 	@PostMapping("/addProduct")
 	public Product addProduct(@RequestBody Product product) {
+		System.out.println("entra");
+		System.out.println(product);
 		return serviceProduct.addProduct(product);
 	}
 
