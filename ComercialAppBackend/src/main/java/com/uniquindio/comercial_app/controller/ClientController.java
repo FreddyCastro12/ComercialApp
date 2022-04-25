@@ -36,6 +36,12 @@ public class ClientController {
 	public List<Client> listClients() {
 		return serviceClient.listClients();
 	}
+	
+	// Get Client by id
+		@GetMapping("/getClient/{idClient}")
+		public Client getClient(@PathVariable("idClient") Integer idClient) {
+			return serviceClient.findById(idClient);
+		}
 
 	// Edit client
 	@PutMapping(path = { "/editClient" })

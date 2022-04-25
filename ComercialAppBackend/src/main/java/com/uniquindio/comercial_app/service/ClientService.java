@@ -53,4 +53,9 @@ public class ClientService implements IClientService{
 		return null;
 	}
 
+	@Override
+	public Client findById(Integer idClient) {
+		return dataClient.findById(idClient).get();
+	}
+
 }

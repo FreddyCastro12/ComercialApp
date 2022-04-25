@@ -2,6 +2,7 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { ROUTES } from '../sidebar/sidebar.component';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-navbar',
@@ -9,6 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
+  word:string = "";
   public focus;
   public listTitles: any[];
   public location: Location;
@@ -31,6 +33,17 @@ export class NavbarComponent implements OnInit {
         }
     }
     return 'Dashboard';
+  }
+
+  logout(){
+    localStorage.removeItem("idClient")
+    sessionStorage.removeItem("idClient")
+    this.router.navigate(["/dashboard"])
+  }
+
+  search(){
+    this.router.navigate(["/dashboard"])
+    localStorage.setItem("findWord",this.word)
   }
 
 }

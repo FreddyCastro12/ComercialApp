@@ -22,5 +22,8 @@ export class ServiceService {
   deleteProduct(id:number){
     return this.http.delete<Product>(this.UrlProduct+"/deleteProduct/" + id);
   }
+  listProductsByWord(word:string){
+    return this.http.get<Product[]>(this.UrlProduct+"/listProducts/" + word);
+  }
 
 }

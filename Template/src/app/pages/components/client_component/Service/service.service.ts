@@ -25,4 +25,7 @@ export class ServiceService {
   loginCliente(email:String, password:String){
     return this.http.get<Client>(this.UrlCliente+"/loginClient/" + email + "/" + password);
   }
+  getClient(idClient:number){
+    return this.http.get<Client>(this.UrlCliente+"/getClient/" + idClient);
+  }
 }

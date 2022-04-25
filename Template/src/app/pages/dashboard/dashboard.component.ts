@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import Chart from 'chart.js';
 
 // core components
@@ -58,7 +58,15 @@ export class DashboardComponent implements OnInit {
 			data: chartExample1.data
 		});
   }
-
+  
+  updateListProducts(){
+    let word = localStorage.getItem("findWord")
+    alert(word)
+    this.service.listProductsByWord(word)
+    .subscribe(data=>{
+      this.products=data;
+    })
+  }
 
   public updateOptions() {
     this.salesChart.data.datasets[0].data = this.data;

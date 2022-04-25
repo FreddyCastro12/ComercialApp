@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Client } from '../components/client_component/Model/Client';
 import { ServiceService } from '../components/client_component/Service/service.service';
 
 @Component({
@@ -11,6 +12,7 @@ import { ServiceService } from '../components/client_component/Service/service.s
 export class LoginComponent implements OnInit {
   email: String;
   password: String;
+  client:Client = new Client;
 
   constructor(public clientService: ServiceService, private router:Router) {}
 
@@ -19,8 +21,9 @@ export class LoginComponent implements OnInit {
 
   loginClient() {
     this.clientService.loginCliente(this.email, this.password).subscribe(res => {
-      let respuesta = JSON.parse(JSON.stringify(res));
-      console.log(respuesta);
+      this.client=res;
+      sessionStorage.setItem("idClient",this.client.id+"");
+      this.router.navigate(["/dashboard"]);
     });
   }
 }

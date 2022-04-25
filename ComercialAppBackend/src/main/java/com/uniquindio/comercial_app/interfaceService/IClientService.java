@@ -15,4 +15,6 @@ public interface IClientService {
 	public Client deleteClient(Integer id);
 	
 	public Client loginClient(String email, String password);
+
+	public Client findById(Integer idClient);
 }
