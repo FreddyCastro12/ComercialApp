@@ -12,6 +12,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
+import { NoLoginGuard } from './no-login.guard';
+import { LoginGuard } from './LoginGuard';
 
 
 @NgModule({
@@ -29,7 +31,7 @@ import { ComponentsModule } from './components/components.module';
     AdminLayoutComponent,
     AuthLayoutComponent
   ],
-  providers: [],
+  providers: [LoginGuard, NoLoginGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
     this.clientService.loginCliente(this.email, this.password).subscribe(res => {
       this.client=res;
       sessionStorage.setItem("idClient",this.client.id+"");
+      localStorage.setItem("Email", this.client.email+"")
       this.router.navigate(["/dashboard"]);
     });
   }

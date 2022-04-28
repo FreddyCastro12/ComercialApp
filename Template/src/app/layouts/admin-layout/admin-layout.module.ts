@@ -15,6 +15,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProductoComponent } from 'src/app/pages/producto/producto.component';
 import { LocalComponent } from 'src/app/pages/local/local.component';
 import { ServicioComponent } from 'src/app/pages/servicio/servicio.component';
+import { LoginGuard } from 'src/app/LoginGuard';
+import { NoLoginGuard } from 'src/app/no-login.guard';
 // import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -36,7 +38,8 @@ import { ServicioComponent } from 'src/app/pages/servicio/servicio.component';
     ProductoComponent,
     LocalComponent,
     ServicioComponent,
-  ]
+  ],
+  providers: [LoginGuard, NoLoginGuard],
 })
 
 export class AdminLayoutModule {}
