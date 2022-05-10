@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.uniquindio.comercial_app.interfaceService.IClientService;
 import com.uniquindio.comercial_app.modelo.Client;
+import com.uniquindio.comercial_app.modelo.Menu;
 
 @RestController
 @RequestMapping("/client")
@@ -36,12 +37,12 @@ public class ClientController {
 	public List<Client> listClients() {
 		return serviceClient.listClients();
 	}
-	
+
 	// Get Client by id
-		@GetMapping("/getClient/{idClient}")
-		public Client getClient(@PathVariable("idClient") Integer idClient) {
-			return serviceClient.findById(idClient);
-		}
+	@GetMapping("/getClient/{idClient}")
+	public Client getClient(@PathVariable("idClient") Integer idClient) {
+		return serviceClient.findById(idClient);
+	}
 
 	// Edit client
 	@PutMapping(path = { "/editClient" })
@@ -61,4 +62,9 @@ public class ClientController {
 		return serviceClient.loginClient(email, password);
 	}
 
+	// List menus
+	@GetMapping("/getMenus/{idClient}")
+	public List<Menu> getMenus(@PathVariable("idClient") Integer idClient) {
+		return serviceClient.getMenus(idClient);
+	}
 }

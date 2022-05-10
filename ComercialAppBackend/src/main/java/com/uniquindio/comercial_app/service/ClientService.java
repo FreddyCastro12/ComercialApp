@@ -7,13 +7,18 @@ import org.springframework.stereotype.Service;
 
 import com.uniquindio.comercial_app.interfaceService.IClientService;
 import com.uniquindio.comercial_app.interfaces.IClient;
+import com.uniquindio.comercial_app.interfaces.IMenu;
 import com.uniquindio.comercial_app.modelo.Client;
+import com.uniquindio.comercial_app.modelo.Menu;
 
 @Service
 public class ClientService implements IClientService{
 	
 	@Autowired
 	private IClient dataClient;
+	
+	@Autowired
+	private IMenu dataMenu;
 	
 	@Override
 	public Client addClient(Client client) {
@@ -56,6 +61,11 @@ public class ClientService implements IClientService{
 	@Override
 	public Client findById(Integer idClient) {
 		return dataClient.findById(idClient).get();
+	}
+
+	@Override
+	public List<Menu> getMenus(Integer id) {
+		return dataMenu.getMenus(id);
 	}
 
 }

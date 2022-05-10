@@ -14,6 +14,7 @@ import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { NoLoginGuard } from './no-login.guard';
 import { LoginGuard } from './LoginGuard';
+import { MenuComponent } from './pages/menu/menu.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { LoginGuard } from './LoginGuard';
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    AuthLayoutComponent
+    AuthLayoutComponent,
+    MenuComponent
   ],
   providers: [LoginGuard, NoLoginGuard],
   bootstrap: [AppComponent]

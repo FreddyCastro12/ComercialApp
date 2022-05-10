@@ -39,7 +39,7 @@ export class NavbarComponent implements OnInit {
     localStorage.removeItem("idClient")
     sessionStorage.removeItem("idClient")
     localStorage.removeItem("Email")
-    this.router.navigate(["/dashboard"])
+    this.router.navigate(["/login"])
   }
 
   search(){
