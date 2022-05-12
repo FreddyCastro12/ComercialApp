@@ -27,4 +27,8 @@ export class LoginComponent implements OnInit {
       this.router.navigate(["/dashboard"]);
     });
   }
+
+  redirectRegister(){
+    this.router.navigate(["/register"]);
+  }
 }

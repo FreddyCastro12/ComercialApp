@@ -9,7 +9,9 @@ import {
   chartExample2
 } from "../../variables/charts";
 import { Product } from '../components/product_client/Model/Product';
-import { ServiceService } from '../components/product_client/Service/service.service'
+import { ServiceService } from '../components/product_client/Service/service.service';
+import { ShoppingCart } from '../components/shopping_cart_component/Model/shoppingCart';
+import { ServiceShoppingCart } from '../components/shopping_cart_component/Service/ServiceShoppingCart';
 
 @Component({
   selector: 'app-dashboard',
@@ -18,13 +20,15 @@ import { ServiceService } from '../components/product_client/Service/service.ser
 })
 export class DashboardComponent implements OnInit {
   products: Product[];
+  productsTemps: Product[] = [];
+  shoppingCarts: ShoppingCart = new ShoppingCart();
   public datasets: any;
   public data: any;
   public salesChart;
   public clicked: boolean = true;
   public clicked1: boolean = false;
 
-  constructor(private service:ServiceService) { }
+  constructor(private service:ServiceService, private serviceShopping: ServiceShoppingCart) { }
 
   ngOnInit() {
     this.service.listProducts()
@@ -71,6 +75,31 @@ export class DashboardComponent implements OnInit {
   public updateOptions() {
     this.salesChart.data.datasets[0].data = this.data;
     this.salesChart.update();
+  }
+
+  buyProduct(product: Product){
+    alert("comprado" + product.name)
+    if(this.shoppingCarts.id==null){
+      this.productsTemps.push(product);
+      this.shoppingCarts.products = this.productsTemps;
+      this.shoppingCarts.cost=product.cost;
+      this.shoppingCarts.state = "Sin confirmar";
+      console.log("sin" + this.shoppingCarts)
+      this.serviceShopping.createShoppingCart(this.shoppingCarts)
+      .subscribe(data=>{
+        this.shoppingCarts=data;
+        console.log("crea" + this.shoppingCarts.id)
+      })
+    } else{
+      console.log("con" + this.shoppingCarts)
+      this.shoppingCarts.cost = this.shoppingCarts.cost + product.cost;
+      this.serviceShopping.addProductShoppingCart(product, this.shoppingCarts.id)
+      .subscribe(data=>{
+        this.shoppingCarts=data;
+        console.log("agrega" + this.shoppingCarts)
+        window.location.reload();
+      })
+    }
   }
 
 }

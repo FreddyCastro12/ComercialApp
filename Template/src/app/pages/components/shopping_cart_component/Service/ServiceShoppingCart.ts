@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ShoppingCart } from '../Model/shoppingCart'
+import { Product } from '../../product_client/Model/Product';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ServiceService {
+export class ServiceShoppingCart {
 
   constructor(private http:HttpClient) { }
-  UrlShoppingCart = 'http://localhost:8080/shoppingCart';
+  UrlShoppingCart = 'http://localhost:8080/comercialApp/shoppingCart';
 
   createShoppingCart(shoppingCart:ShoppingCart){
     return this.http.post<ShoppingCart>(this.UrlShoppingCart + "/addShoppingCart",shoppingCart);
@@ -21,6 +22,9 @@ export class ServiceService {
   }
   deleteShoppingCart(id:number){
     return this.http.delete<ShoppingCart>(this.UrlShoppingCart+"/deleteShoppingCart/" + id);
+  }
+  addProductShoppingCart(product:Product, idCart:number){
+    return this.http.post<ShoppingCart>(this.UrlShoppingCart + "/addProductToCart/" + idCart,product);
   }
 
 }

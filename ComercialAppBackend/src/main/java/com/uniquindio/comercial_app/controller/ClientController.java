@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.uniquindio.comercial_app.interfaceService.IClientService;
 import com.uniquindio.comercial_app.modelo.Client;
 import com.uniquindio.comercial_app.modelo.Menu;
+import com.uniquindio.comercial_app.modelo.ShoppingCart;
 
 @RestController
 @RequestMapping("/client")
