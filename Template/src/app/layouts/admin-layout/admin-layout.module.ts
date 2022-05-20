@@ -17,6 +17,8 @@ import { LocalComponent } from 'src/app/pages/local/local.component';
 import { ServicioComponent } from 'src/app/pages/servicio/servicio.component';
 import { LoginGuard } from 'src/app/LoginGuard';
 import { NoLoginGuard } from 'src/app/no-login.guard';
+import { MenuComponent } from 'src/app/pages/menu/menu.component';
+import { ClientComponent } from 'src/app/pages/client/client.component';
 // import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -38,6 +40,8 @@ import { NoLoginGuard } from 'src/app/no-login.guard';
     ProductoComponent,
     LocalComponent,
     ServicioComponent,
+    MenuComponent,
+    ClientComponent
   ],
   providers: [LoginGuard, NoLoginGuard],
 })

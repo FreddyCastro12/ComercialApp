@@ -11,6 +11,7 @@ import { ServicioComponent } from 'src/app/pages/servicio/servicio.component';
 import { LoginGuard } from 'src/app/LoginGuard';
 import { MiCarritoComponent } from 'src/app/pages/mi-carrito/mi-carrito.component';
 import { MenuComponent } from 'src/app/pages/menu/menu.component';
+import { ClientComponent } from 'src/app/pages/client/client.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
@@ -23,4 +24,5 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'servicio',       component: ServicioComponent, canActivate: [LoginGuard] },
     { path: 'mi-carrito',     component: MiCarritoComponent, canActivate: [LoginGuard] },
     { path: 'menu',           component: MenuComponent, canActivate: [LoginGuard] },
+    { path: 'client',         component: ClientComponent, canActivate: [LoginGuard] },
 ];
