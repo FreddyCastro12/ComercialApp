@@ -14,12 +14,17 @@ export class NavbarComponent implements OnInit {
   public focus;
   public listTitles: any[];
   public location: Location;
+  public nameClient: String;
+  public amountClient: String;
+
   constructor(location: Location,  private element: ElementRef, private router: Router) {
     this.location = location;
   }
 
   ngOnInit() {
     this.listTitles = ROUTES.filter(listTitle => listTitle);
+    this.nameClient = localStorage.getItem("Name");
+    this.amountClient = localStorage.getItem("Amount");
   }
   getTitle(){
     var titlee = this.location.prepareExternalUrl(this.location.path());

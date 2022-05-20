@@ -28,17 +28,21 @@ public class Product {
 	@Column(name = "PRODUCT_IMAGE")
 	private String imagen;
 	
+	@Column(name = "PRODUCT_AMOUNT")
+	private Integer amount;
+	
 	public Product() {
 
 	}
 
-	public Product(Integer id, String name, Double cost, String description, String imagen) {
+	public Product(Integer id, String name, Double cost, String description, String imagen, Integer amount) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.cost = cost;
 		this.description = description;
 		this.imagen = imagen;
+		this.amount = amount;
 	}
 
 	public Integer getId() {
@@ -80,5 +84,12 @@ public class Product {
 	public void setImagen(String imagen) {
 		this.imagen = imagen;
 	}
-	
+
+	public Integer getAmount() {
+		return amount;
+	}
+
+	public void setAmount(Integer amount) {
+		this.amount = amount;
+	}
 }

@@ -15,6 +15,8 @@ import { ComponentsModule } from './components/components.module';
 import { NoLoginGuard } from './no-login.guard';
 import { LoginGuard } from './LoginGuard';
 import { MenuComponent } from './pages/menu/menu.component';
+import { MiCarritoComponent } from './pages/mi-carrito/mi-carrito.component';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -25,13 +27,15 @@ import { MenuComponent } from './pages/menu/menu.component';
     ComponentsModule,
     NgbModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ToastrModule.forRoot(), 
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
-    MenuComponent
+    MenuComponent,
+    MiCarritoComponent
   ],
   providers: [LoginGuard, NoLoginGuard],
   bootstrap: [AppComponent]

@@ -7,6 +7,6 @@ public interface IShoppingCartService {
 
 	public ShoppingCart addShoppingCart(ShoppingCart shoppingCart);
 
-	public ShoppingCart findById(Integer idCart);
+	public ShoppingCart findById(int idCart);
 
 }

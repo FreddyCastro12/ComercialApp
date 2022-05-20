@@ -26,5 +26,8 @@ export class ServiceShoppingCart {
   addProductShoppingCart(product:Product, idCart:number){
     return this.http.post<ShoppingCart>(this.UrlShoppingCart + "/addProductToCart/" + idCart,product);
   }
+  getShoppingCartById(idCart: number){
+    return this.http.get<ShoppingCart>(this.UrlShoppingCart+"/getCart/" + idCart);
+  }
 
 }

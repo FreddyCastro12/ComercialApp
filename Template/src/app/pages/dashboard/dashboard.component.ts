@@ -31,6 +31,11 @@ export class DashboardComponent implements OnInit {
   constructor(private service:ServiceService, private serviceShopping: ServiceShoppingCart) { }
 
   ngOnInit() {
+    let id = localStorage.getItem("idCart");
+    this.serviceShopping.getShoppingCartById(Number(id))
+      .subscribe(data=>{
+        this.shoppingCarts=data;
+      })
     this.service.listProducts()
     .subscribe(data=>{
       this.products=data;
@@ -78,7 +83,7 @@ export class DashboardComponent implements OnInit {
   }
 
   buyProduct(product: Product){
-    alert("comprado" + product.name)
+    alert("Producto agregado al carrito")
     if(this.shoppingCarts.id==null){
       this.productsTemps.push(product);
       this.shoppingCarts.products = this.productsTemps;
@@ -88,6 +93,7 @@ export class DashboardComponent implements OnInit {
       this.serviceShopping.createShoppingCart(this.shoppingCarts)
       .subscribe(data=>{
         this.shoppingCarts=data;
+        localStorage.setItem("idCart", this.shoppingCarts.id + "")
         console.log("crea" + this.shoppingCarts.id)
       })
     } else{
@@ -96,6 +102,7 @@ export class DashboardComponent implements OnInit {
       this.serviceShopping.addProductShoppingCart(product, this.shoppingCarts.id)
       .subscribe(data=>{
         this.shoppingCarts=data;
+        localStorage.setItem("idCart", this.shoppingCarts.id + "")
         console.log("agrega" + this.shoppingCarts)
         window.location.reload();
       })

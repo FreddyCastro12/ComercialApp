@@ -8,4 +8,5 @@ export class Client {
     cellPhoneNumber: String;
     //shoppingCarts[]: ShoppingCarts;
     amount: number;
+    client_type_id: number;
 }

@@ -1,5 +1,5 @@
 export class Menu {
-    id: Number;
+    id: number;
     path: string;
     title: string;
     icon: string;

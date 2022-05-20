@@ -8,10 +8,24 @@ import { Menu } from '../Model/Menu';
 export class ServiceService {
 
   constructor(private http:HttpClient) { }
-  UrlLocal = 'http://localhost:8080/comercialApp/client';
+  UrlMenuClient = 'http://localhost:8080/comercialApp/client';
+  
+  UrlMenu = 'http://localhost:8080/comercialApp/menu';
 
+  createMenu(menu:Menu){
+    return this.http.post<Menu>(this.UrlMenu + "/addMenu", menu);
+  }
+  listMenus(){
+    return this.http.get<Menu[]>(this.UrlMenu+"/listMenus");
+  }
+  updateMenu(menu:Menu){
+    return this.http.put<Menu>(this.UrlMenu+"/editMenu", menu);
+  }
+  deleteMenu(id:number){
+    return this.http.delete<Menu>(this.UrlMenu+"/deleteMenu/" + id);
+  }
   getMenus(id:number){
-    return this.http.get<Menu[]>(this.UrlLocal+"/getMenus/" + id);
+    return this.http.get<Menu[]>(this.UrlMenuClient+"/getMenus/" + id);
   }
 
 }

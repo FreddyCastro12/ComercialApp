@@ -17,9 +17,9 @@ public class ShoppingCartService implements IShoppingCartService{
 	public ShoppingCart addShoppingCart(ShoppingCart shoppingCart) {
 		return dataShoppingCart.save(shoppingCart);
 	}
-
+	
 	@Override
-	public ShoppingCart findById(Integer idCart) {
+	public ShoppingCart findById(int idCart) {
 		return dataShoppingCart.findById(idCart).get();
 	}
 }

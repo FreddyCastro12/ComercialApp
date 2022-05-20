@@ -16,6 +16,7 @@ export class RegisterComponent implements OnInit {
   }
   
   addCliente(){
+    this.client.client_type_id = 2;
     this.service.createCliente(this.client).subscribe(data => {
       alert("El cliente se registro con exito");
       this.router.navigate(["/login"]);

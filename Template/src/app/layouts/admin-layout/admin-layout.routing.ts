@@ -9,6 +9,8 @@ import { ProductoComponent } from 'src/app/pages/producto/producto.component';
 import { LocalComponent } from 'src/app/pages/local/local.component';
 import { ServicioComponent } from 'src/app/pages/servicio/servicio.component';
 import { LoginGuard } from 'src/app/LoginGuard';
+import { MiCarritoComponent } from 'src/app/pages/mi-carrito/mi-carrito.component';
+import { MenuComponent } from 'src/app/pages/menu/menu.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
@@ -19,4 +21,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'producto',       component: ProductoComponent, canActivate: [LoginGuard] },
     { path: 'local',          component: LocalComponent, canActivate: [LoginGuard] },
     { path: 'servicio',       component: ServicioComponent, canActivate: [LoginGuard] },
+    { path: 'mi-carrito',     component: MiCarritoComponent, canActivate: [LoginGuard] },
+    { path: 'menu',           component: MenuComponent, canActivate: [LoginGuard] },
 ];

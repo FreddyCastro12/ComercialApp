@@ -4,4 +4,5 @@ export class Product {
     cost: number;
     description: String;
     imagen: String;
+    amount: number;
 }
