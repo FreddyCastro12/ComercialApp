@@ -32,18 +32,55 @@ public class ShoppingCartController {
 	// Add product to cart
 	@PostMapping("/addProductToCart/{idCart}")
 	public ShoppingCart addProductToCart(@RequestBody Product product, @PathVariable Integer idCart) {
-		ShoppingCart shoppingCart = serviceCarts.findById(idCart);
-		List<Product> products = shoppingCart.getProducts();
-		products.add(product);
-		shoppingCart.setCost(shoppingCart.getCost() + product.getCost());
-		shoppingCart.setProducts(products);
+		ShoppingCart shoppingCart = new ShoppingCart();
+		try {
+			shoppingCart = serviceCarts.findById(idCart);
+			List<Product> products = shoppingCart.getProducts();
+			boolean isContain = false;
+			boolean centinel = false;
+			for (int i = 0; i <= shoppingCart.getProducts().size() -1 && centinel == false; i++) {
+				if (products.get(i).getId() == product.getId()) {
+					Product product2 = shoppingCart.getProducts().get(i);
+					if (product2.getId() == product.getId()) {
+						if (product.getAmount() == null) {
+							product2.setAmount(1);
+							shoppingCart.getProducts().set(i, product2);
+							shoppingCart.setCost(shoppingCart.getCost() + product2.getCost());
+							isContain = true;
+							centinel = true;
+						}else {
+							product2.setAmount(product2.getAmount() + 1);
+							shoppingCart.getProducts().set(i, product2);
+							shoppingCart.setCost(shoppingCart.getCost() + product2.getCost());
+							isContain = true;
+							centinel = true;
+						}
+					}
+				}
+			}
+			if (isContain == false) {
+				products.add(product);
+				shoppingCart.setCost(shoppingCart.getCost() + product.getCost());
+				shoppingCart.setProducts(products);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("Error agregando el producto a el carrito");
+		}
 		return serviceCarts.addShoppingCart(shoppingCart);
 	}
 
 	// get cart by id
 	@GetMapping("/getCart/{idCart}")
 	public ShoppingCart addShoppingCart(@PathVariable Integer idCart) {
-		return serviceCarts.findById(idCart);
+		ShoppingCart cart = new ShoppingCart();
+		try {
+			cart = serviceCarts.findById(idCart);
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("product not found");
+		}
+		return cart;
 	}
 
 }

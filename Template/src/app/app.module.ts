@@ -14,10 +14,8 @@ import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { NoLoginGuard } from './no-login.guard';
 import { LoginGuard } from './LoginGuard';
-import { MenuComponent } from './pages/menu/menu.component';
 import { MiCarritoComponent } from './pages/mi-carrito/mi-carrito.component';
 import { ToastrModule } from 'ngx-toastr';
-import { ClientComponent } from './pages/client/client.component';
 
 
 @NgModule({
@@ -35,9 +33,7 @@ import { ClientComponent } from './pages/client/client.component';
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
-    MenuComponent,
-    MiCarritoComponent,
-    ClientComponent
+    MiCarritoComponent
   ],
   providers: [LoginGuard, NoLoginGuard],
   bootstrap: [AppComponent]

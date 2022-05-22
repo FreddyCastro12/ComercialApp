@@ -10,6 +10,7 @@ export class ServiceShoppingCart {
 
   constructor(private http:HttpClient) { }
   UrlShoppingCart = 'http://localhost:8080/comercialApp/shoppingCart';
+  UrlClient = 'http://localhost:8080/comercialApp/client';
 
   createShoppingCart(shoppingCart:ShoppingCart){
     return this.http.post<ShoppingCart>(this.UrlShoppingCart + "/addShoppingCart",shoppingCart);
@@ -28,6 +29,9 @@ export class ServiceShoppingCart {
   }
   getShoppingCartById(idCart: number){
     return this.http.get<ShoppingCart>(this.UrlShoppingCart+"/getCart/" + idCart);
+  }
+  buyCart(idClient: string,shoppingCart:ShoppingCart){
+    return this.http.post<ShoppingCart>(this.UrlClient + "/buyCart/" + idClient,shoppingCart);
   }
 
 }

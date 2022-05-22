@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.uniquindio.comercial_app.interfaceService.IClientService;
+import com.uniquindio.comercial_app.interfaceService.IShoppingCartService;
 import com.uniquindio.comercial_app.modelo.Client;
 import com.uniquindio.comercial_app.modelo.Menu;
 import com.uniquindio.comercial_app.modelo.ShoppingCart;
@@ -25,6 +26,9 @@ public class ClientController {
 
 	@Autowired
 	private IClientService serviceClient;
+
+	@Autowired
+	private IShoppingCartService serviceCarts;
 
 	// Create client
 	@PostMapping("/addClient")
@@ -67,5 +71,31 @@ public class ClientController {
 	@GetMapping("/getMenus/{idClient}")
 	public List<Menu> getMenus(@PathVariable("idClient") Integer idClient) {
 		return serviceClient.getMenus(idClient);
+	}
+
+	// Buy Shopping carts
+	@PostMapping("/buyCart/{idClient}")
+	public Client buyCart(@PathVariable("idClient") String idClient, @RequestBody ShoppingCart shoppingCart) {
+		Client client = new Client();
+		boolean centiinel = false;
+		try {
+			client = serviceClient.findById(Integer.parseInt(idClient));
+			for (int i = 0; i <= client.getShoppingCarts().size() -1 && centiinel == false; i++) {
+				if (client.getShoppingCarts().get(i).getId() == shoppingCart.getId()) {
+					client.getShoppingCarts().set(i, shoppingCart);
+					centiinel = true;
+				}
+			}
+			if (centiinel == false) {
+				client.getShoppingCarts().add(shoppingCart);
+			}
+			client.setAmount(client.getAmount() - shoppingCart.getCost());
+			shoppingCart.setState("Pagado");
+			serviceCarts.addShoppingCart(shoppingCart);
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("El cliente no cuenta con los recursos necesarios para finalizar la compra");
+		}
+		return serviceClient.addClient(client);
 	}
 }

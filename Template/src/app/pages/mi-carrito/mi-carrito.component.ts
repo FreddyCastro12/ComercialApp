@@ -26,7 +26,12 @@ miCarrito:ShoppingCart = new ShoppingCart();
   }
 
   comprarCarrito(){
-
+    let idClient: string = localStorage.getItem("idCliente");
+    console.log(idClient)
+    this.serviceShopping.buyCart(idClient,this.miCarrito)
+      .subscribe(data=>{
+        this.miCarrito=data;
+      })
   }
 
 }
