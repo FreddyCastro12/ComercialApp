@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -18,7 +20,7 @@ public class ShoppingCart {
     @GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name = "SHOPPING_CART_ID")
 	private Integer id;
-	@OneToMany
+	@ManyToMany
 	private List<Product> products;
 	@OneToMany
 	private List<Service> services;
@@ -78,5 +80,10 @@ public class ShoppingCart {
 	public void setState(String state) {
 		this.state = state;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "ShoppingCart [id=" + id + ", products=" + products + ", services=" + services + ", cost=" + cost
+				+ ", state=" + state + "]";
+	}
 }

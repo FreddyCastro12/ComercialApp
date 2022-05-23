@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.uniquindio.comercial_app.interfaceService.IClientService;
 import com.uniquindio.comercial_app.interfaceService.IShoppingCartService;
+import com.uniquindio.comercial_app.modelo.Client;
 import com.uniquindio.comercial_app.modelo.Product;
 import com.uniquindio.comercial_app.modelo.ShoppingCart;
 
@@ -22,11 +24,19 @@ public class ShoppingCartController {
 
 	@Autowired
 	private IShoppingCartService serviceCarts;
+	
+	@Autowired
+	private IClientService serviceClient;
 
 	// Create cart
-	@PostMapping("/addShoppingCart")
-	public ShoppingCart addShoppingCart(@RequestBody ShoppingCart shoppingCart) {
-		return serviceCarts.addShoppingCart(shoppingCart);
+	@PostMapping("/addShoppingCart/{idClient}")
+	public ShoppingCart addShoppingCart(@RequestBody ShoppingCart shoppingCart, @PathVariable Integer idClient) {
+		Client client = new Client();
+		client = serviceClient.findById(idClient);
+		client.getShoppingCarts().add(shoppingCart);
+		ShoppingCart carrito = serviceCarts.addShoppingCart(shoppingCart);
+		serviceClient.addClient(client);
+		return carrito;
 	}
 
 	// Add product to cart

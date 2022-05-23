@@ -1,3 +1,5 @@
+import { ShoppingCart } from "../../shopping_cart_component/Model/shoppingCart";
+
 export class Client {
     id: number;
     user: String;
@@ -6,7 +8,7 @@ export class Client {
     email: String;
     address: String;
     cellPhoneNumber: String;
-    //shoppingCarts[]: ShoppingCarts;
+    shoppingCarts: ShoppingCart[];
     amount: number;
     client_type_id: number;
 }

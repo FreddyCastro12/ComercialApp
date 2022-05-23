@@ -12,8 +12,8 @@ export class ServiceShoppingCart {
   UrlShoppingCart = 'http://localhost:8080/comercialApp/shoppingCart';
   UrlClient = 'http://localhost:8080/comercialApp/client';
 
-  createShoppingCart(shoppingCart:ShoppingCart){
-    return this.http.post<ShoppingCart>(this.UrlShoppingCart + "/addShoppingCart",shoppingCart);
+  createShoppingCart(idClient: string, shoppingCart:ShoppingCart){
+    return this.http.post<ShoppingCart>(this.UrlShoppingCart + "/addShoppingCart/" + idClient,shoppingCart);
   }
   listShoppingCarts(){
     return this.http.get<ShoppingCart[]>(this.UrlShoppingCart+"/listShoppingCart");

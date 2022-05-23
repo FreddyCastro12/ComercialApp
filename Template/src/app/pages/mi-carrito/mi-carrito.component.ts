@@ -13,7 +13,7 @@ import { windowWhen } from 'rxjs';
 export class MiCarritoComponent implements OnInit {
   miCarrito: ShoppingCart = new ShoppingCart();
   client: Client = new Client;
-  constructor(private serviceShopping: ServiceShoppingCart, private serviceClient:ServiceService) {
+  constructor(private serviceShopping: ServiceShoppingCart, private serviceClient: ServiceService) {
     let id = localStorage.getItem("idCart");
     this.serviceShopping.getShoppingCartById(Number(id))
       .subscribe(data => {
@@ -41,7 +41,7 @@ export class MiCarritoComponent implements OnInit {
         this.client = data;
         localStorage.setItem("Amount", this.client.amount + "")
       })
-      window.location.reload();
+    window.location.reload();
   }
 
 }

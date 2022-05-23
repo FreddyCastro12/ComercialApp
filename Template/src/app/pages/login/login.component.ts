@@ -26,6 +26,9 @@ export class LoginComponent implements OnInit {
       localStorage.setItem("Email", this.client.email+"");
       localStorage.setItem("Name", this.client.name+"");
       localStorage.setItem("Amount", this.client.amount+"");
+      if(this.client.shoppingCarts[0] != null){
+        localStorage.setItem("idCart", this.client.shoppingCarts[0].id+"");
+      }
       this.router.navigate(["/dashboard"]);
     });
   }
