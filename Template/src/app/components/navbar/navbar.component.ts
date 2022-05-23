@@ -42,8 +42,9 @@ export class NavbarComponent implements OnInit {
 
   logout(){
     localStorage.removeItem("idClient")
-    sessionStorage.removeItem("idClient")
     localStorage.removeItem("Email")
+    localStorage.removeItem("Name")
+    localStorage.removeItem("Amount")
     this.router.navigate(["/login"])
   }
 

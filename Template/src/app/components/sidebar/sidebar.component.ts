@@ -32,7 +32,7 @@ export class SidebarComponent implements OnInit {
   }
 
   getMenus(){
-    let idClient = sessionStorage.getItem("idClient");
+    let idClient = localStorage.getItem("idClient");
     this.serviceMenu.getMenus(Number(idClient)).subscribe(res => {
       res.forEach(value => {
         this.menuItems.push({ path: value.path, title: value.title,  icon: value.icon, class: value.clase });
@@ -43,8 +43,9 @@ export class SidebarComponent implements OnInit {
 
   logout(){
     localStorage.removeItem("idClient")
-    sessionStorage.removeItem("idClient")
     localStorage.removeItem("Email")
+    localStorage.removeItem("Name")
+    localStorage.removeItem("Amount")
     this.router.navigate(["/login"])
   }
 }

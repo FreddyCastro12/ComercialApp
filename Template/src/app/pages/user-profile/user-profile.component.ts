@@ -14,7 +14,7 @@ export class UserProfileComponent implements OnInit {
   constructor(private router:Router, private service:ServiceService) { }
 
   ngOnInit() {
-    let idClient = sessionStorage.getItem("idClient");
+    let idClient = localStorage.getItem("idClient");
     this.service.getClient(Number(idClient))
     .subscribe(data=>{
       this.client=data;
