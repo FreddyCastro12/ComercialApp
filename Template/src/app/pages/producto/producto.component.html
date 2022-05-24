@@ -25,6 +25,12 @@
                             <label for="product_amount" class="form-label">Cantidad</label>
                             <input type="number" class="form-control" [(ngModel)]="product.amount" name="amount">
                         </div>
+                        <div class="mb-3">
+                            <select class="custom-select" name="product_local" [(ngModel)]="idLocal">
+                                <option selected>Seleccione el local</option>
+                                <option *ngFor="let local of locals" [value]="local.id">{{local.name}}</option>
+                            </select>
+                        </div>
                         <div class="input-group mb-3">
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" [(ngModel)]="product.imagen" name="imagen">

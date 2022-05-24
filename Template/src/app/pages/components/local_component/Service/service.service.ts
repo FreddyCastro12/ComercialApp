@@ -22,5 +22,7 @@ export class ServiceService {
   deleteLocal(id:number){
     return this.http.delete<Local>(this.UrlLocal+"/deleteLocal/" + id);
   }
-
+  getLocal(id:number){
+    return this.http.get<Local>(this.UrlLocal+"/getLocal/" + id);
+  }
 }

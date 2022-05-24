@@ -52,4 +52,10 @@ public class LocalController {
 	public Local deleteLocal(@PathVariable("idLocal") Integer idLocal) {
 		return serviceLocal.deleteLocal(idLocal);
 	}
+	
+	// List local
+	@GetMapping("/getLocal/{idLocal}")
+	public Local getLocal(@PathVariable("idLocal") Integer idLocal) {
+		return serviceLocal.getLocal(idLocal);
+	}
 }

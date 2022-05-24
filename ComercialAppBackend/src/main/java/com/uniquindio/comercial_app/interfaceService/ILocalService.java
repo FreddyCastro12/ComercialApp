@@ -12,4 +12,6 @@ public interface ILocalService {
 	public Local editLocal(Local local);
 
 	public Local deleteLocal(Integer id);
+
+	public Local getLocal(Integer idLocal);
 }

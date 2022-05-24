@@ -39,4 +39,9 @@ public class LocalService implements ILocalService{
 		return local;
 	}
 
+	@Override
+	public Local getLocal(Integer idLocal) {
+		return dataLocal.findById(idLocal).get();
+	}
+
 }
