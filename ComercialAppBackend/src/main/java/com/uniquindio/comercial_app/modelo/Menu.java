@@ -79,4 +79,9 @@ public class Menu {
 	public void setClase(String clase) {
 		this.clase = clase;
 	}
+
+	@Override
+	public String toString() {
+		return "Menu [id=" + id + ", path=" + path + ", title=" + title + ", icon=" + icon + ", clase=" + clase + "]";
+	}
 }

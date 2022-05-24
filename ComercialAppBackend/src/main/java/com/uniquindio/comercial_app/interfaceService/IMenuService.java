@@ -12,4 +12,6 @@ public interface IMenuService {
 	public Menu editMenu(Menu menu);
 
 	public Menu deleteMenu(Integer id);
+
+	public List<Integer> listClientTypeMenus(Integer idMenu);
 }

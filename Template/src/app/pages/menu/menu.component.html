@@ -27,12 +27,12 @@
                         </div>
                         <div class="mb-3">
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="1">
-                                <label class="form-check-label" for="inlineCheckbox1">Administrador</label>
+                                <input class="form-check-input" type="checkbox" id="checkAdmin" name="menuAdministrador" (change)="addAdmin($event)">
+                                <label class="form-check-label" for="checkAdmin">Administrador</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="2">
-                                <label class="form-check-label" for="inlineCheckbox2">Cliente</label>
+                                <input class="form-check-input" type="checkbox" id="checkClient" name="menuCliente" (change)="addClient($event)">
+                                <label class="form-check-label" for="checkClient">Cliente</label>
                             </div>
                         </div>
                         <button (click)="saveMenu(menuForm)" type="submit" class="btn btn-primary">Guardar Menu</button>

@@ -38,4 +38,9 @@ public class MenuService implements IMenuService{
 		return menu;
 	}
 
+	@Override
+	public List<Integer> listClientTypeMenus(Integer idMenu) {
+		return dataMenu.listClientTypeMenus(idMenu);
+	}
+
 }

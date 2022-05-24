@@ -16,4 +16,10 @@ public interface IMenu extends CrudRepository<Menu, Integer> {
 			+ "JOIN menu M ON M.menu_id = CTM.menus_menu_id "
 			+ "WHERE C.client_id = :id", nativeQuery = true)
 	List<Menu> getMenus(@Param(value = "id") Integer id);
+
+	@Query(value = "SELECT ctm.client_type_client_type_id "
+			+ "FROM client_type_menus ctm "
+			+ "JOIN menu m ON ctm.menus_menu_id = m.menu_id "
+			+ "WHERE m.menu_id = :idMenu", nativeQuery = true)
+	List<Integer> listClientTypeMenus(@Param(value = "idMenu") Integer idMenu);
 }

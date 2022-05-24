@@ -46,6 +46,7 @@ export class SidebarComponent implements OnInit {
     localStorage.removeItem("Email")
     localStorage.removeItem("Name")
     localStorage.removeItem("Amount")
-    this.router.navigate(["/login"])
+    this.router.navigate(["/dashboard"])
+    window.location.reload();
   }
 }

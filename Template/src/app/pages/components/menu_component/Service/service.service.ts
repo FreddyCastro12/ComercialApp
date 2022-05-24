@@ -12,14 +12,17 @@ export class ServiceService {
   
   UrlMenu = 'http://localhost:8080/comercialApp/menu';
 
-  createMenu(menu:Menu){
-    return this.http.post<Menu>(this.UrlMenu + "/addMenu", menu);
+  createMenu(menu:Menu, client: number, admin: number){
+    return this.http.post<Menu>(this.UrlMenu + "/addMenu/" + client + "/" + admin, menu);
   }
   listMenus(){
     return this.http.get<Menu[]>(this.UrlMenu+"/listMenus");
   }
-  updateMenu(menu:Menu){
-    return this.http.put<Menu>(this.UrlMenu+"/editMenu", menu);
+  listClientTypeMenus(idMenu: number){
+    return this.http.get<number[]>(this.UrlMenu+"/listClientTypeMenus/" + idMenu);
+  }
+  updateMenu(menu:Menu, client: number, admin: number){
+    return this.http.put<Menu>(this.UrlMenu+"/editMenu/" + client + "/" + admin, menu);
   }
   deleteMenu(id:number){
     return this.http.delete<Menu>(this.UrlMenu+"/deleteMenu/" + id);

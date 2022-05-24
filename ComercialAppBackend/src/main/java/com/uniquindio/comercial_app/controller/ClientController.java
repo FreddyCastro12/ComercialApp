@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.uniquindio.comercial_app.interfaceService.IClientService;
 import com.uniquindio.comercial_app.interfaceService.IShoppingCartService;
 import com.uniquindio.comercial_app.modelo.Client;
+import com.uniquindio.comercial_app.modelo.Client_type;
 import com.uniquindio.comercial_app.modelo.Menu;
 import com.uniquindio.comercial_app.modelo.ShoppingCart;
 
@@ -34,6 +35,9 @@ public class ClientController {
 	@PostMapping("/addClient")
 	public Client addClient(@RequestBody Client client) {
 		client.setAmount(0.0);
+		Client_type client_type = new Client_type();
+		client_type.setId(2);
+		client.setClient_type_id(client_type);
 		return serviceClient.addClient(client);
 	}
 
