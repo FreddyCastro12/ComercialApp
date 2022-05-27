@@ -34,6 +34,7 @@ public class LocalService implements ILocalService{
 	public Local deleteLocal(Integer id) {
 		Local local = dataLocal.findById(id).get();
 		if (local!=null) {
+			System.out.println("Entra");
 			dataLocal.delete(local);
 		}
 		return local;

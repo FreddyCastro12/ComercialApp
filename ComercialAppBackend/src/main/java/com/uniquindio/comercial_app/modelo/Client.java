@@ -136,4 +136,11 @@ public class Client {
 	public void setClient_type_id(Client_type client_type_id) {
 		this.client_type_id = client_type_id;
 	}
+
+	@Override
+	public String toString() {
+		return "Client [id=" + id + ", user=" + user + ", password=" + password + ", name=" + name + ", email=" + email
+				+ ", address=" + address + ", cellPhoneNumber=" + cellPhoneNumber + ", shoppingCarts=" + shoppingCarts
+				+ ", amount=" + amount + ", client_type_id=" + client_type_id + "]";
+	}
 }
