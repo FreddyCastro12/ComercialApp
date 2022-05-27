@@ -33,7 +33,7 @@ import { ToastrModule } from 'ngx-toastr';
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
-    MiCarritoComponent
+    MiCarritoComponent,
   ],
   providers: [LoginGuard, NoLoginGuard],
   bootstrap: [AppComponent]
