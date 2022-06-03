@@ -1,24 +1,16 @@
 package com.uniquindio.comercial_app;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.util.Date;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -31,7 +23,6 @@ import com.uniquindio.comercial_app.interfaces.ILocal;
 import com.uniquindio.comercial_app.interfaces.IProduct;
 import com.uniquindio.comercial_app.interfaces.IService;
 import com.uniquindio.comercial_app.modelo.Client;
-import com.uniquindio.comercial_app.modelo.Client_type;
 import com.uniquindio.comercial_app.modelo.Local;
 import com.uniquindio.comercial_app.modelo.Product;
 import com.uniquindio.comercial_app.modelo.Service;
@@ -40,7 +31,7 @@ import com.uniquindio.comercial_app.service.LocalService;
 import com.uniquindio.comercial_app.service.ProductService;
 import com.uniquindio.comercial_app.service.ServiceService;
 
-@RunWith(MockitoJUnitRunner.class)
+//@RunWith(MockitoJUnitRunner.class)
 class Testing {
 	@Mock
 	private LocalService localService;
