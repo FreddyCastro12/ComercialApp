@@ -12,6 +12,7 @@ import { LoginGuard } from 'src/app/LoginGuard';
 import { MiCarritoComponent } from 'src/app/pages/mi-carrito/mi-carrito.component';
 import { MenuComponent } from 'src/app/pages/menu/menu.component';
 import { ClientComponent } from 'src/app/pages/client/client.component';
+import { CoinsComponent } from 'src/app/pages/coins/coins.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
@@ -25,4 +26,5 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'mi-carrito',     component: MiCarritoComponent, canActivate: [LoginGuard] },
     { path: 'menu',           component: MenuComponent, canActivate: [LoginGuard] },
     { path: 'client',         component: ClientComponent, canActivate: [LoginGuard] },
+    { path: 'coins',          component: CoinsComponent, canActivate: [LoginGuard] },
 ];

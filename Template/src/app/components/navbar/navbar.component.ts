@@ -3,6 +3,7 @@ import { ROUTES } from '../sidebar/sidebar.component';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-navbar',
@@ -17,7 +18,7 @@ export class NavbarComponent implements OnInit {
   public nameClient: String;
   public amountClient: String;
 
-  constructor(location: Location,  private element: ElementRef, private router: Router) {
+  constructor(location: Location,  private element: ElementRef, private router: Router, private toastr: ToastrService) {
     this.location = location;
   }
 
@@ -53,6 +54,12 @@ export class NavbarComponent implements OnInit {
   search(){
     this.router.navigate(["/dashboard"])
     localStorage.setItem("findWord",this.word)
+  }
+
+  addAmount(){
+    this.toastr.success("Exito", 'Se ha enviado el formulario de recargar dinero a su correo', {
+      timeOut: 5000,
+    });
   }
 
 }
