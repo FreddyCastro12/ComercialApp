@@ -28,9 +28,13 @@ public class ProductController {
 	// Create product
 	@PostMapping("/addProduct")
 	public Product addProduct(@RequestBody Product product) {
-		String name = getNameOfPath(product.getImagen());
-		product.setImagen(name);
-		return serviceProduct.addProduct(product);
+		if(validateProduct(product)) {
+			String name = getNameOfPath(product.getImagen());
+			product.setImagen(name);
+			return serviceProduct.addProduct(product);
+		}else {
+			return null;
+		}
 	}
 
 	// List products
@@ -42,9 +46,13 @@ public class ProductController {
 	// Edit product
 	@PutMapping(path = { "/editProduct" })
 	public Product editProduct(@RequestBody Product product) {
-		String name = getNameOfPath(product.getImagen());
-		product.setImagen(name);
-		return serviceProduct.editProduct(product);
+		if(validateProduct(product)) {
+			String name = getNameOfPath(product.getImagen());
+			product.setImagen(name);
+			return serviceProduct.editProduct(product);
+		}else {
+			return null;
+		}
 	}
 
 	// Delete product
@@ -71,5 +79,17 @@ public class ProductController {
 		int find = path.lastIndexOf(92);
 		name = path.substring(find+1,path.length());
 		return name;
+	}
+	
+	public boolean validateProduct(Product product) {
+		if(product.getAmount() < 0 
+				|| product.getCost() < 0 
+				|| product.getDescription() == "" 
+				|| product.getLocal() == null 
+				|| product.getName() == "")
+		{
+			return false;
+		}
+		return true;
 	}
 }

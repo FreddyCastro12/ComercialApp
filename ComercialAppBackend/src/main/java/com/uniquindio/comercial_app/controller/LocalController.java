@@ -20,14 +20,18 @@ import com.uniquindio.comercial_app.modelo.Local;
 @RequestMapping("/local")
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 public class LocalController {
-	
+
 	@Autowired
 	private ILocalService serviceLocal;
-	
+
 	// Create local
 	@PostMapping("/addLocal")
 	public Local addLocal(@RequestBody Local local) {
-		return serviceLocal.addLocal(local);
+		if(validateLocal(local)) {
+			return serviceLocal.addLocal(local);
+		} else {
+			return null;
+		}
 	}
 
 	// List local
@@ -35,7 +39,7 @@ public class LocalController {
 	public List<Local> listLocal() {
 		return serviceLocal.listLocal();
 	}
-	
+
 	@GetMapping("/prueba")
 	public String prueba() {
 		return "entra";
@@ -44,7 +48,11 @@ public class LocalController {
 	// Edit local
 	@PutMapping(path = { "/editLocal/{idLocal}" })
 	public Local editLocal(@RequestBody Local local, @PathVariable("idLocal") Integer idLocal) {
-		return serviceLocal.editLocal(local);
+		if (validateLocal(local)) {
+			return serviceLocal.editLocal(local);
+		} else {
+			return null;
+		}
 	}
 
 	// Delete local
@@ -52,10 +60,17 @@ public class LocalController {
 	public Local deleteLocal(@PathVariable("idLocal") Integer idLocal) {
 		return serviceLocal.deleteLocal(idLocal);
 	}
-	
+
 	// List local
 	@GetMapping("/getLocal/{idLocal}")
 	public Local getLocal(@PathVariable("idLocal") Integer idLocal) {
 		return serviceLocal.getLocal(idLocal);
+	}
+
+	public boolean validateLocal(Local local) {
+		if (local.getDateStart() == null || local.getName() == "" || local.getSite() == "" || local.getStatus() < 0) {
+			return false;
+		}
+		return true;
 	}
 }

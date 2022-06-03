@@ -26,7 +26,11 @@ public class ServiceController {
 	// Create service
 	@PostMapping("/addService")
 	public Service addService(@RequestBody Service service) {
-		return serviceService.addService(service);
+		if (validateService(service)) {
+			return serviceService.addService(service);
+		} else {
+			return null;
+		}
 	}
 
 	// List services
@@ -38,12 +42,24 @@ public class ServiceController {
 	// Edit service
 	@PutMapping(path = { "/editService/{idService}" })
 	public Service editService(@RequestBody Service service, @PathVariable("idService") Integer idService) {
-		return serviceService.editService(service);
+		if (validateService(service)) {
+			return serviceService.editService(service);
+		} else {
+			return null;
+		}
 	}
 
 	// Delete service
 	@DeleteMapping(path = { "/deleteService/{idService}" })
 	public Service deleteService(@PathVariable("idService") Integer idService) {
 		return serviceService.deleteService(idService);
+	}
+
+	public boolean validateService(Service service) {
+		if (service.getCost() < 0 || service.getDateStart() == null || service.getDescription() == ""
+				|| service.getName() == "") {
+			return false;
+		}
+		return true;
 	}
 }

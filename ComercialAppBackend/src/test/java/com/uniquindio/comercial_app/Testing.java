@@ -1,7 +1,12 @@
 package com.uniquindio.comercial_app;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.util.Date;
 
@@ -12,7 +17,11 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.uniquindio.comercial_app.controller.ClientController;
 import com.uniquindio.comercial_app.controller.LocalController;
 import com.uniquindio.comercial_app.controller.ProductController;
@@ -69,9 +78,21 @@ class Testing {
 	@InjectMocks
 	private ServiceController serviceController;
 
+	ObjectMapper objectMapper;
+
+	@Autowired
+	private MockMvc mockMvc;
+
+	@Mock
 	private Local local;
+	
+	@Mock
 	private Product product;
+	
+	@Mock
 	private Client client;
+	
+	@Mock
 	private Service service;
 
 	@BeforeEach
@@ -111,40 +132,34 @@ class Testing {
 		service.setDescription("Descripcion servicio prueba");
 		service.setId(8);
 		service.setName("Servicio pruebas");
+
+		objectMapper = new ObjectMapper();
 	}
 
 	// Pruebas Unitarias Locales
 
 	@Test
 	public void createLocal() {
-		try {
-			System.out.println(local.toString());
-			when(localController.addLocal(local)).thenReturn(local);
-			assertNotNull(localController.addLocal(local));
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-
+		System.out.println(local.toString());
+		when(localController.addLocal(local)).thenReturn(local);
+		assertNotNull(localController.addLocal(local));
 	}
 
 	@Test
 	public void updateLocal() {
-		try {
-			when(localController.getLocal(10)).thenReturn(local);
-			Local l = localController.getLocal(10);
-			if (l != null) {
-				System.out.println("Local antes: " + local.toString());
-				l.setName("Pruebas unitarias");
-				l.setSite("407");
-				when(localController.editLocal(l, l.getId())).thenReturn(l);
-				assertNotNull(localController.editLocal(l, l.getId()));
-				System.out.println("Local despues: " + l.toString());
-			} else {
-				throw new Exception("El local indicado no existe");
-			}
-		} catch (Exception e) {
-			System.out.println(e);
+
+		when(localController.getLocal(10)).thenReturn(local);
+		Local l = localController.getLocal(10);
+		assertNotNull(l);
+		if (l != null) {
+			System.out.println("Local antes: " + local.toString());
+			l.setName("Pruebas unitarias");
+			l.setSite("407");
+			when(localController.editLocal(l, l.getId())).thenReturn(l);
+			assertNotNull(localController.editLocal(l, l.getId()));
+			System.out.println("Local despues: " + l.toString());
 		}
+
 	}
 
 	@Test
@@ -162,116 +177,77 @@ class Testing {
 
 	@Test
 	public void createProduct() {
-		try {
-			System.out.println(product.toString());
-			when(productController.addProduct(product)).thenReturn(product);
-			assertNotNull(productController.addProduct(product));
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-
+		System.out.println(product.toString());
+		when(productController.addProduct(product)).thenReturn(product);
+		assertNotNull(productController.addProduct(product));
 	}
 
 	@Test
 	public void updateProduct() {
-		try {
-			System.out.println("Producto antes: " + product.toString());
-			product.setName("Pruebas unitarias");
-			product.setCost(4000.0);
-			when(productController.editProduct(product)).thenReturn(product);
-			assertNotNull(productController.editProduct(product));
-			System.out.println("Producto despues: " + product.toString());
-		} catch (Exception e) {
-			System.out.println(e);
-		}
+		System.out.println("Producto antes: " + product.toString());
+		product.setName("Prueba");
+		product.setCost(4000.0);
+		when(productController.editProduct(product)).thenReturn(product);
+		assertNotNull(productController.editProduct(product));
+		System.out.println("Producto despues: " + product.toString());
 	}
 
 	@Test
 	public void deleteProduct() {
-		try {
-			when(productController.deleteProduct(product.getId())).thenReturn(product);
-			assertNotNull(productController.deleteProduct(product.getId()));
-			System.out.println("Producto eliminado");
-		} catch (Exception e) {
-			System.out.println(e);
-		}
+		when(productController.deleteProduct(product.getId())).thenReturn(product);
+		assertNotNull(productController.deleteProduct(product.getId()));
+		System.out.println("Producto eliminado");
 	}
 
 	// Pruebas Unitarias Cliente
 
 	@Test
 	public void createClient() {
-		try {
-			System.out.println(client.toString());
-			when(clientController.addClient(client)).thenReturn(client);
-			assertNotNull(clientController.addClient(client));
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-
+		System.out.println(client.toString());
+		when(clientController.addClient(client)).thenReturn(client);
+		assertNotNull(clientController.addClient(client));
 	}
 
 	@Test
 	public void updateClient() {
-		try {
-			System.out.println("Cliente antes: " + client.toString());
-			client.setName("Pruebas unitarias");
-			client.setAmount(4000.0);
-			when(clientController.editClient(client)).thenReturn(client);
-			assertNotNull(clientController.editClient(client));
-			System.out.println("Cliente despues: " + client.toString());
-		} catch (Exception e) {
-			System.out.println(e);
-		}
+		System.out.println("Cliente antes: " + client.toString());
+		client.setName("Pruebas unitarias");
+		client.setAmount(4000.0);
+		when(clientController.editClient(client)).thenReturn(client);
+		assertNotNull(clientController.editClient(client));
+		System.out.println("Cliente despues: " + client.toString());
 	}
 
 	@Test
 	public void deleteClient() {
-		try {
-			when(clientController.deleteClient(client.getId())).thenReturn(client);
-			assertNotNull(clientController.deleteClient(client.getId()));
-			System.out.println("Cliente eliminado");
-		} catch (Exception e) {
-			System.out.println(e);
-		}
+		when(clientController.deleteClient(client.getId())).thenReturn(client);
+		assertNotNull(clientController.deleteClient(client.getId()));
+		System.out.println("Cliente eliminado");
 	}
 
 	// Pruebas Unitarias Servicios
 
 	@Test
 	public void createService() {
-		try {
-			System.out.println(service.toString());
-			when(serviceController.addService(service)).thenReturn(service);
-			assertNotNull(serviceController.addService(service));
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-
+		System.out.println(service.toString());
+		when(serviceController.addService(service)).thenReturn(service);
+		assertNotNull(serviceController.addService(service));
 	}
 
 	@Test
 	public void updateService() {
-		try {
-			System.out.println("Servicio antes: " + service.toString());
-			service.setName("Pruebas unitarias");
-			service.setCost(4000.0);
-			when(serviceController.editService(service, service.getId())).thenReturn(service);
-			assertNotNull(serviceController.editService(service, service.getId()));
-			System.out.println("Servicio despues: " + service.toString());
-		} catch (Exception e) {
-			System.out.println(e);
-		}
+		System.out.println("Servicio antes: " + service.toString());
+		service.setName("Pruebas unitarias");
+		service.setCost(4000.0);
+		when(serviceController.editService(service, service.getId())).thenReturn(service);
+		assertNotNull(serviceController.editService(service, service.getId()));
+		System.out.println("Servicio despues: " + service.toString());
 	}
 
 	@Test
 	public void deleteService() {
-		try {
-			when(serviceController.deleteService(service.getId())).thenReturn(service);
-			assertNotNull(serviceController.deleteService(service.getId()));
-			System.out.println("Servicio eliminado");
-		} catch (Exception e) {
-			System.out.println(e);
-		}
+		when(serviceController.deleteService(service.getId())).thenReturn(service);
+		assertNotNull(serviceController.deleteService(service.getId()));
+		System.out.println("Servicio eliminado");
 	}
 }
