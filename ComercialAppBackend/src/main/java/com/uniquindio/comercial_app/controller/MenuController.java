@@ -20,7 +20,7 @@ import com.uniquindio.comercial_app.modelo.Menu;
 
 @RestController
 @RequestMapping("/menu")
-@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
+@CrossOrigin
 public class MenuController {
 	@Autowired
 	private IMenuService serviceMenu;

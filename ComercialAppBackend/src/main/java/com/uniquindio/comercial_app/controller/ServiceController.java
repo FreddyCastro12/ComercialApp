@@ -18,7 +18,7 @@ import com.uniquindio.comercial_app.modelo.Service;
 
 @RestController
 @RequestMapping("/service")
-@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
+@CrossOrigin
 public class ServiceController {
 	@Autowired
 	private IServiceService serviceService;

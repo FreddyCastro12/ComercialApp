@@ -19,7 +19,7 @@ import com.uniquindio.comercial_app.modelo.Product;
 
 @RestController
 @RequestMapping("/product")
-@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
+@CrossOrigin
 public class ProductController {
 
 	@Autowired

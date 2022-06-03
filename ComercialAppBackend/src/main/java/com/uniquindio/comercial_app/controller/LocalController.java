@@ -18,7 +18,7 @@ import com.uniquindio.comercial_app.modelo.Local;
 
 @RestController
 @RequestMapping("/local")
-@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
+@CrossOrigin
 public class LocalController {
 
 	@Autowired
