@@ -39,8 +39,11 @@ public class ClientController {
 	// Create client
 	@PostMapping("/addClient")
 	public Client addClient(@RequestBody Client client) {
+		System.out.println(client.toString());
 		if (validateClient(client)) {
+			System.out.println("Cliente validado");
 			if (validateEmail(client.getEmail())) {
+				System.out.println("Email cliente validado");
 				client.setAmount(0.0);
 				Client_type client_type = new Client_type();
 				client_type.setId(2);
@@ -125,9 +128,10 @@ public class ClientController {
 	}
 
 	public boolean validateClient(Client client) {
-		if (client.getAddress() == "" || client.getAmount() < 0 || client.getCellPhoneNumber() == ""
-				|| client.getEmail() == "" || client.getName() == ""
-				|| client.getPassword() == "" || client.getUser() == "") {
+		if (client.getAddress() == "" || client.getAddress() == null || client.getCellPhoneNumber() == ""
+				|| client.getCellPhoneNumber() == null || client.getEmail() == null || client.getName() == null
+				|| client.getEmail() == "" || client.getName() == "" || client.getPassword() == "" || client.getPassword() == null
+				|| client.getUser() == "" || client.getUser() == null) {
 			return false;
 		}
 		return true;
@@ -136,5 +140,11 @@ public class ClientController {
 	public static boolean validateEmail(String emailStr) {
 		Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(emailStr);
 		return matcher.find();
+	}
+
+	// Test
+	@GetMapping("/test")
+	public String test() {
+		return "Its alive";
 	}
 }

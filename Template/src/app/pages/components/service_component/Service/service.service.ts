@@ -8,7 +8,7 @@ import { Service } from '../Model/Service'
 export class ServiceService {
 
   constructor(private http:HttpClient) { }
-  UrlService = 'http://localhost:8080/comercialApp/service';
+  UrlService = 'http://ec2-52-91-233-117.compute-1.amazonaws.com:8080/comercialApp/service';
 
   createService(service:Service){
     return this.http.post<Service>(this.UrlService + "/addService", service);

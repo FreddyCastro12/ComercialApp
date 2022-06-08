@@ -82,11 +82,11 @@ public class ProductController {
 	}
 	
 	public boolean validateProduct(Product product) {
-		if(product.getAmount() < 0 
-				|| product.getCost() < 0 
-				|| product.getDescription() == "" 
+		if(product.getAmount() < 0  || product.getAmount() == null
+				|| product.getCost() < 0  || product.getCost() == null
+				|| product.getDescription() == ""  || product.getDescription() == null 
 				|| product.getLocal() == null 
-				|| product.getName() == "")
+				|| product.getName() == "" || product.getName() == null)
 		{
 			return false;
 		}

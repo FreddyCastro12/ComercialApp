@@ -98,7 +98,7 @@ class Testing {
 		local.setDateEnd(new Date());
 
 		product = new Product();
-		product.setAmount(100);
+		product.setAmount(10);
 		product.setCost(10000.0);
 		product.setDescription("Producto prueba unitaria");
 		product.setId(12);
@@ -110,7 +110,7 @@ class Testing {
 		client.setAddress("Direccion");
 		client.setAmount(1000000.0);
 		client.setCellPhoneNumber("3158742658");
-		client.setEmail("correo@gmail.com");
+		client.setEmail("eaml.correocom@gmail.com");
 		client.setId(5);
 		client.setName("Nombre");
 		client.setPassword("contraseña123");

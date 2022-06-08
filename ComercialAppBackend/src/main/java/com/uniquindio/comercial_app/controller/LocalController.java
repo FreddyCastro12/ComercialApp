@@ -68,7 +68,8 @@ public class LocalController {
 	}
 
 	public boolean validateLocal(Local local) {
-		if (local.getDateStart() == null || local.getName() == "" || local.getSite() == "" || local.getStatus() < 0) {
+		if (local.getDateStart() == null || local.getName() == "" || local.getName() == null || local.getSite() == ""
+				|| local.getSite() == null || local.getStatus() < 0 || local.getStatus() == null) {
 			return false;
 		}
 		return true;

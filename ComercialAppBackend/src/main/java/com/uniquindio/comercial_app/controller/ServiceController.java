@@ -56,8 +56,8 @@ public class ServiceController {
 	}
 
 	public boolean validateService(Service service) {
-		if (service.getCost() < 0 || service.getDateStart() == null || service.getDescription() == ""
-				|| service.getName() == "") {
+		if (service.getCost() < 0 || service.getCost() == null || service.getDateStart() == null || service.getDescription() == ""
+				|| service.getDescription() == null || service.getName() == "" || service.getName() == null) {
 			return false;
 		}
 		return true;
