@@ -13,6 +13,7 @@ import javax.persistence.Table;
 @Table(name = "local")
 public class Local {
 	@Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name = "local_id")
 	private Integer id;
 	@Column(name = "local_name")
@@ -85,5 +86,11 @@ public class Local {
 
 	public void setDateEnd(Date dateEnd) {
 		this.dateEnd = dateEnd;
+	}
+
+	@Override
+	public String toString() {
+		return "Local [id=" + id + ", name=" + name + ", site=" + site + ", status=" + status + ", dateStart="
+				+ dateStart + ", dateEnd=" + dateEnd + "]";
 	}
 }

@@ -7,5 +7,5 @@ import com.uniquindio.comercial_app.modelo.Client;
 
 @Repository
 public interface IClient extends CrudRepository<Client, Integer>{
-
+	Client findByEmail(String email);
 }

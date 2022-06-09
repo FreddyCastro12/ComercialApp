@@ -8,16 +8,16 @@ import { Service } from '../Model/Service'
 export class ServiceService {
 
   constructor(private http:HttpClient) { }
-  UrlService = 'http://localhost:8080/service';
+  UrlService = 'http://ec2-52-91-233-117.compute-1.amazonaws.com:8080/comercialApp/service';
 
   createService(service:Service){
-    return this.http.post<Service>(this.UrlService + "/addService",service);
+    return this.http.post<Service>(this.UrlService + "/addService", service);
   }
   listServices(){
-    return this.http.get<Service[]>(this.UrlService+"/listService");
+    return this.http.get<Service[]>(this.UrlService+"/listServices");
   }
-  updateService(service:Service){
-    return this.http.put<Service>(this.UrlService+"/editService",service);
+  updateService(id:number, service:Service){
+    return this.http.put<Service>(this.UrlService+"/editService/" + id, service);
   }
   deleteService(id:number){
     return this.http.delete<Service>(this.UrlService+"/deleteService/" + id);

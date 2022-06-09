@@ -1,0 +1,71 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8"></div>
+<!-- Page content -->
+<div class="container-fluid mt--7">
+    <div class="row">
+        <div class="col">
+            <div class="card shadow">
+                <div class="card-header bg-transparent">
+                    <h3 class="mb-0">Crear Menus</h3>
+                </div>
+                <div class="card-body">
+                    <form #menuForm="ngForm">
+                        <div class="mb-3">
+                            <label for="menu_class" class="form-label">Clase</label>
+                            <input type="text" class="form-control" [(ngModel)]="menu.clase" name="class">
+                        </div>
+                        <div class="mb-3">
+                            <label for="menu_icon" class="form-label">Icono</label>
+                            <input type="text" class="form-control" [(ngModel)]="menu.icon" name="icon">
+                        </div>
+                        <div class="mb-3">
+                            <label for="menu_path" class="form-label">Ruta</label>
+                            <input type="text" class="form-control" [(ngModel)]="menu.path" name="path">
+                        </div>
+                        <div class="mb-3">
+                            <label for="menu_title" class="form-label">Titulo</label>
+                            <input type="text" class="form-control" [(ngModel)]="menu.title" name="title">
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="checkAdmin" name="menuAdministrador" (change)="addAdmin($event)">
+                                <label class="form-check-label" for="checkAdmin">Administrador</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="checkClient" name="menuCliente" (change)="addClient($event)">
+                                <label class="form-check-label" for="checkClient">Cliente</label>
+                            </div>
+                        </div>
+                        <button (click)="saveMenu(menuForm)" type="submit" class="btn btn-primary">Guardar Menu</button>
+                    </form>
+                </div>
+                <div class="card-header border-0">
+                    <h3 class="mb-0">Menus</h3>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Clase</th>
+                                <th scope="col">Icono</th>
+                                <th scope="col">Ruta</th>
+                                <th scope="col">Titulo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let menu of menus">
+                                <th>{{menu.clase}}</th>
+                                <td>{{menu.icon}}</td>
+                                <td>{{menu.path}}</td>
+                                <td>{{menu.title}}</td>
+                                <td>
+                                    <a (click)="updateMenu(menu)"><i class="fa-solid fa-pen-to-square"></i></a>
+                                    <a (click)="deleteMenu(menu)"><i class="fa-solid fa-trash"></i></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

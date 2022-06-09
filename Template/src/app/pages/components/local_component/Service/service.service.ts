@@ -8,19 +8,21 @@ import { Local } from '../Model/Local';
 export class ServiceService {
 
   constructor(private http:HttpClient) { }
-  UrlLocal = 'http://localhost:8080/local';
+  UrlLocal = 'http://ec2-52-91-233-117.compute-1.amazonaws.com:8080/comercialApp/local';
 
   createLocal(local:Local){
-    return this.http.post<Local>(this.UrlLocal + "/addLocal",local);
+    return this.http.post<Local>(this.UrlLocal + "/addLocal", local);
   }
   listLocals(){
     return this.http.get<Local[]>(this.UrlLocal+"/listLocal");
   }
-  updateLocal(local:Local){
-    return this.http.put<Local>(this.UrlLocal+"/editLocal",local);
+  updateLocal(id:number, local:Local){
+    return this.http.put<Local>(this.UrlLocal+"/editLocal/" + id, local);
   }
   deleteLocal(id:number){
     return this.http.delete<Local>(this.UrlLocal+"/deleteLocal/" + id);
   }
-
+  getLocal(id:number){
+    return this.http.get<Local>(this.UrlLocal+"/getLocal/" + id);
+  }
 }

@@ -7,7 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -33,9 +35,12 @@ public class Client {
 	private List<ShoppingCart> shoppingCarts;
 	@Column(name = "CLIENT_AMOUNT")
 	private Double amount;
+	@OneToOne
+    @JoinColumn(name = "client_type_id", referencedColumnName = "CLIENT_TYPE_ID")
+	private Client_type client_type_id;
 	
 	public Client(Integer id, String user, String password, String name, String email, String address,
-			String cellPhoneNumber, List<ShoppingCart> shoppingCarts, Double amount) {
+			String cellPhoneNumber, List<ShoppingCart> shoppingCarts, Double amount, Client_type client_type_id) {
 		this.id = id;
 		this.user = user;
 		this.password = password;
@@ -45,6 +50,7 @@ public class Client {
 		this.cellPhoneNumber = cellPhoneNumber;
 		this.shoppingCarts = shoppingCarts;
 		this.amount = amount;
+		this.client_type_id = client_type_id;
 	}
 	
 	public Client() {
@@ -122,5 +128,19 @@ public class Client {
 	public void setAmount(Double amount) {
 		this.amount = amount;
 	}
-	
+
+	public Client_type getClient_type_id() {
+		return client_type_id;
+	}
+
+	public void setClient_type_id(Client_type client_type_id) {
+		this.client_type_id = client_type_id;
+	}
+
+	@Override
+	public String toString() {
+		return "Client [id=" + id + ", user=" + user + ", password=" + password + ", name=" + name + ", email=" + email
+				+ ", address=" + address + ", cellPhoneNumber=" + cellPhoneNumber + ", shoppingCarts=" + shoppingCarts
+				+ ", amount=" + amount + ", client_type_id=" + client_type_id + "]";
+	}
 }

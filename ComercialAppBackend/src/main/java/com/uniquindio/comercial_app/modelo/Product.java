@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -12,7 +14,7 @@ import javax.persistence.Table;
 public class Product {
 	
 	@Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name = "PRODUCT_ID")
 	private Integer id;
 	
@@ -28,17 +30,25 @@ public class Product {
 	@Column(name = "PRODUCT_IMAGE")
 	private String imagen;
 	
+	@Column(name = "PRODUCT_AMOUNT")
+	private Integer amount;
+	
+	@OneToOne
+	private Local local;
+	
 	public Product() {
 
 	}
 
-	public Product(Integer id, String name, Double cost, String description, String imagen) {
+	public Product(Integer id, String name, Double cost, String description, String imagen, Integer amount, Local local) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.cost = cost;
 		this.description = description;
 		this.imagen = imagen;
+		this.amount = amount;
+		this.local = local;
 	}
 
 	public Integer getId() {
@@ -80,5 +90,26 @@ public class Product {
 	public void setImagen(String imagen) {
 		this.imagen = imagen;
 	}
-	
+
+	public Integer getAmount() {
+		return amount;
+	}
+
+	public void setAmount(Integer amount) {
+		this.amount = amount;
+	}
+
+	public Local getLocal() {
+		return local;
+	}
+
+	public void setLocal(Local local) {
+		this.local = local;
+	}
+
+	@Override
+	public String toString() {
+		return "Product [id=" + id + ", name=" + name + ", cost=" + cost + ", description=" + description + ", imagen="
+				+ imagen + ", amount=" + amount + ", local=" + local + "]";
+	}
 }

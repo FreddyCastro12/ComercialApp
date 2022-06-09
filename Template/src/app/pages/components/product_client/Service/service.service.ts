@@ -8,7 +8,7 @@ import { Product } from '../Model/Product';
 export class ServiceService {
 
   constructor(private http:HttpClient) { }
-  UrlProduct = 'http://localhost:8080/product';
+  UrlProduct = 'http://ec2-52-91-233-117.compute-1.amazonaws.com:8080/comercialApp/product';
 
   createProduct(product:Product){
     return this.http.post<Product>(this.UrlProduct + "/addProduct", product);
@@ -21,6 +21,9 @@ export class ServiceService {
   }
   deleteProduct(id:number){
     return this.http.delete<Product>(this.UrlProduct+"/deleteProduct/" + id);
+  }
+  listProductsByWord(word:string){
+    return this.http.get<Product[]>(this.UrlProduct+"/listProducts/" + word);
   }
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ServiceService } from 'src/app/pages/components/menu_component/Service/service.service';
 
 declare interface RouteInfo {
     path: string;
@@ -7,33 +8,45 @@ declare interface RouteInfo {
     icon: string;
     class: string;
 }
-export const ROUTES: RouteInfo[] = [
-    { path: '/dashboard', title: 'Inicio',  icon: 'ni-tv-2 text-primary', class: '' },
-    { path: '/icons', title: 'Icons',  icon:'ni-planet text-blue', class: '' },
-    { path: '/maps', title: 'Ubicaciones',  icon:'ni-pin-3 text-orange', class: '' },
-    { path: '/user-profile', title: 'User profile',  icon:'ni-single-02 text-yellow', class: '' },
-    { path: '/tables', title: 'Tables',  icon:'ni-bullet-list-67 text-red', class: '' },
-    { path: '/login', title: 'Login',  icon:'ni-key-25 text-info', class: '' },
-    { path: '/register', title: 'Register',  icon:'ni-circle-08 text-pink', class: '' },
-    { path: '/producto', title: 'Productos',  icon:'ni-basket text-pink', class: '' }
-];
+export var ROUTES: RouteInfo[] = [];
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.scss']
+  styleUrls: ['./sidebar.component.scss'],
+  providers: [ServiceService]
 })
 export class SidebarComponent implements OnInit {
 
   public menuItems: any[];
   public isCollapsed = true;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private serviceMenu: ServiceService) { }
 
   ngOnInit() {
+    this.getMenus(); 
     this.menuItems = ROUTES.filter(menuItem => menuItem);
     this.router.events.subscribe((event) => {
       this.isCollapsed = true;
    });
+  }
+
+  getMenus(){
+    let idClient = localStorage.getItem("idClient");
+    this.serviceMenu.getMenus(Number(idClient)).subscribe(res => {
+      res.forEach(value => {
+        this.menuItems.push({ path: value.path, title: value.title,  icon: value.icon, class: value.clase });
+      });
+      console.log(ROUTES);
+    });;
+  }
+
+  logout(){
+    localStorage.removeItem("idClient")
+    localStorage.removeItem("Email")
+    localStorage.removeItem("Name")
+    localStorage.removeItem("Amount")
+    this.router.navigate(["/dashboard"])
+    window.location.reload();
   }
 }

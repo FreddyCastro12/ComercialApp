@@ -14,7 +14,7 @@ import javax.persistence.Table;
 public class Service {
 
 	@Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name = "SERVICE_ID")
 	private Integer id;
 	@Column(name = "SERVICE_NAME")
@@ -88,5 +88,10 @@ public class Service {
 	public void setDateEnd(Date dateEnd) {
 		this.dateEnd = dateEnd;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Service [id=" + id + ", name=" + name + ", cost=" + cost + ", description=" + description
+				+ ", dateStart=" + dateStart + ", dateEnd=" + dateEnd + "]";
+	}
 }

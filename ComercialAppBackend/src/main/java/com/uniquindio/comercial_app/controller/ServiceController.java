@@ -18,7 +18,7 @@ import com.uniquindio.comercial_app.modelo.Service;
 
 @RestController
 @RequestMapping("/service")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin
 public class ServiceController {
 	@Autowired
 	private IServiceService serviceService;
@@ -26,7 +26,11 @@ public class ServiceController {
 	// Create service
 	@PostMapping("/addService")
 	public Service addService(@RequestBody Service service) {
-		return serviceService.addService(service);
+		if (validateService(service)) {
+			return serviceService.addService(service);
+		} else {
+			return null;
+		}
 	}
 
 	// List services
@@ -38,12 +42,24 @@ public class ServiceController {
 	// Edit service
 	@PutMapping(path = { "/editService/{idService}" })
 	public Service editService(@RequestBody Service service, @PathVariable("idService") Integer idService) {
-		return serviceService.editService(service);
+		if (validateService(service)) {
+			return serviceService.editService(service);
+		} else {
+			return null;
+		}
 	}
 
 	// Delete service
 	@DeleteMapping(path = { "/deleteService/{idService}" })
 	public Service deleteService(@PathVariable("idService") Integer idService) {
 		return serviceService.deleteService(idService);
+	}
+
+	public boolean validateService(Service service) {
+		if (service.getCost() < 0 || service.getCost() == null || service.getDateStart() == null || service.getDescription() == ""
+				|| service.getDescription() == null || service.getName() == "" || service.getName() == null) {
+			return false;
+		}
+		return true;
 	}
 }
