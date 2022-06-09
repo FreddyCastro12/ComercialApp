@@ -39,6 +39,10 @@
                         <i class="ni ni-single-02"></i>
                         <span>Mi Perfil</span>
                     </a>
+                    <button routerLinkActive="active" [routerLink]="['/coins']" class="dropdown-item">
+                        <i class="fa-brands fa-bitcoin"></i>
+                        <span>Añadir fondos</span>
+                    </button>
                     <div class="dropdown-divider"></div>
                     <button (click)="logout()" class="dropdown-item">
                         <i class="ni ni-user-run"></i>

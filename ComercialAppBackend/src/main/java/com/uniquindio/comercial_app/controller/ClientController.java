@@ -1,6 +1,8 @@
 package com.uniquindio.comercial_app.controller;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -22,8 +24,11 @@ import com.uniquindio.comercial_app.modelo.ShoppingCart;
 
 @RestController
 @RequestMapping("/client")
-@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
+@CrossOrigin
 public class ClientController {
+
+	public static final Pattern VALID_EMAIL_ADDRESS_REGEX = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$",
+			Pattern.CASE_INSENSITIVE);
 
 	@Autowired
 	private IClientService serviceClient;
@@ -34,11 +39,22 @@ public class ClientController {
 	// Create client
 	@PostMapping("/addClient")
 	public Client addClient(@RequestBody Client client) {
-		client.setAmount(0.0);
-		Client_type client_type = new Client_type();
-		client_type.setId(2);
-		client.setClient_type_id(client_type);
-		return serviceClient.addClient(client);
+		System.out.println(client.toString());
+		if (validateClient(client)) {
+			System.out.println("Cliente validado");
+			if (validateEmail(client.getEmail())) {
+				System.out.println("Email cliente validado");
+				client.setAmount(0.0);
+				Client_type client_type = new Client_type();
+				client_type.setId(2);
+				client.setClient_type_id(client_type);
+				return serviceClient.addClient(client);
+			} else {
+				return null;
+			}
+		} else {
+			return null;
+		}
 	}
 
 	// List clients
@@ -56,7 +72,15 @@ public class ClientController {
 	// Edit client
 	@PutMapping(path = { "/editClient" })
 	public Client editClient(@RequestBody Client client) {
-		return serviceClient.editClient(client);
+		if (validateClient(client)) {
+			if (validateEmail(client.getEmail())) {
+				return serviceClient.editClient(client);
+			} else {
+				return null;
+			}
+		} else {
+			return null;
+		}
 	}
 
 	// Delete client
@@ -84,7 +108,7 @@ public class ClientController {
 		boolean centiinel = false;
 		try {
 			client = serviceClient.findById(Integer.parseInt(idClient));
-			for (int i = 0; i <= client.getShoppingCarts().size() -1 && centiinel == false; i++) {
+			for (int i = 0; i <= client.getShoppingCarts().size() - 1 && centiinel == false; i++) {
 				if (client.getShoppingCarts().get(i).getId() == shoppingCart.getId()) {
 					client.getShoppingCarts().set(i, shoppingCart);
 					centiinel = true;
@@ -101,5 +125,26 @@ public class ClientController {
 			System.out.println("El cliente no cuenta con los recursos necesarios para finalizar la compra");
 		}
 		return serviceClient.addClient(client);
+	}
+
+	public boolean validateClient(Client client) {
+		if (client.getAddress() == "" || client.getAddress() == null || client.getCellPhoneNumber() == ""
+				|| client.getCellPhoneNumber() == null || client.getEmail() == null || client.getName() == null
+				|| client.getEmail() == "" || client.getName() == "" || client.getPassword() == "" || client.getPassword() == null
+				|| client.getUser() == "" || client.getUser() == null) {
+			return false;
+		}
+		return true;
+	}
+
+	public static boolean validateEmail(String emailStr) {
+		Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(emailStr);
+		return matcher.find();
+	}
+
+	// Test
+	@GetMapping("/test")
+	public String test() {
+		return "Its alive";
 	}
 }

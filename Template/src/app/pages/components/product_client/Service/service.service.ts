@@ -8,7 +8,7 @@ import { Product } from '../Model/Product';
 export class ServiceService {
 
   constructor(private http:HttpClient) { }
-  UrlProduct = 'http://localhost:8080/comercialApp/product';
+  UrlProduct = 'http://ec2-52-91-233-117.compute-1.amazonaws.com:8080/comercialApp/product';
 
   createProduct(product:Product){
     return this.http.post<Product>(this.UrlProduct + "/addProduct", product);

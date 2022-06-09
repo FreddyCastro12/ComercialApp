@@ -88,5 +88,10 @@ public class Service {
 	public void setDateEnd(Date dateEnd) {
 		this.dateEnd = dateEnd;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Service [id=" + id + ", name=" + name + ", cost=" + cost + ", description=" + description
+				+ ", dateStart=" + dateStart + ", dateEnd=" + dateEnd + "]";
+	}
 }

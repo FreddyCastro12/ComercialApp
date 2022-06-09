@@ -9,8 +9,8 @@ import { Product } from '../../product_client/Model/Product';
 export class ServiceShoppingCart {
 
   constructor(private http:HttpClient) { }
-  UrlShoppingCart = 'http://localhost:8080/comercialApp/shoppingCart';
-  UrlClient = 'http://localhost:8080/comercialApp/client';
+  UrlShoppingCart = 'http://ec2-52-91-233-117.compute-1.amazonaws.com:8080/comercialApp/shoppingCart';
+  UrlClient = 'http://ec2-52-91-233-117.compute-1.amazonaws.com:8080/comercialApp/client';
 
   createShoppingCart(idClient: string, shoppingCart:ShoppingCart){
     return this.http.post<ShoppingCart>(this.UrlShoppingCart + "/addShoppingCart/" + idClient,shoppingCart);

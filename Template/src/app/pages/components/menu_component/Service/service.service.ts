@@ -8,9 +8,9 @@ import { Menu } from '../Model/Menu';
 export class ServiceService {
 
   constructor(private http:HttpClient) { }
-  UrlMenuClient = 'http://localhost:8080/comercialApp/client';
+  UrlMenuClient = 'http://ec2-52-91-233-117.compute-1.amazonaws.com:8080/comercialApp/client';
   
-  UrlMenu = 'http://localhost:8080/comercialApp/menu';
+  UrlMenu = 'http://ec2-52-91-233-117.compute-1.amazonaws.com:8080/comercialApp/menu';
 
   createMenu(menu:Menu, client: number, admin: number){
     return this.http.post<Menu>(this.UrlMenu + "/addMenu/" + client + "/" + admin, menu);
